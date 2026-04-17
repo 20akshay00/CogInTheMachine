@@ -44,7 +44,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2fd3r"]
 shader = SubResource("Shader_e3cm6")
 shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 0.750000035625
+shader_parameter/line_thickness = 0.50000002375
 shader_parameter/active = false
 
 [node name="FlamethrowerPart" type="Area2D" unique_id=266467883]
