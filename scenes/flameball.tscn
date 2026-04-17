@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bdv3bgmum76u0"]
+
+[ext_resource type="Script" uid="uid://c24g26tc4otxs" path="res://scripts/ARM/flameball.gd" id="1_6ny8y"]
+[ext_resource type="Texture2D" uid="uid://dx42gcs28ymlr" path="res://assets/art/flameball_spritesheet_v1.png" id="1_em71g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ny8y"]
+atlas = ExtResource("1_em71g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g17va"]
+atlas = ExtResource("1_em71g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdpt7"]
+atlas = ExtResource("1_em71g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5k6d"]
+atlas = ExtResource("1_em71g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ko7p"]
+atlas = ExtResource("1_em71g")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaxa1"]
+atlas = ExtResource("1_em71g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcoxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ny8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g17va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdpt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5k6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ko7p")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaxa1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em71g"]
+radius = 18.027756
+
+[node name="Flameball" type="Area2D" unique_id=1344423761]
+script = ExtResource("1_6ny8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=97548118]
+rotation = -1.5707964
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xcoxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1516157309]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_em71g")
+
+[node name="Timer" type="Timer" parent="." unique_id=534827314]
+wait_time = 5.0
+one_shot = true

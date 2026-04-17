@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://daavq6gtbgm35"]
+
+[ext_resource type="PackedScene" uid="uid://dfy1a50hh2nvn" path="res://scenes/player.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/gun_part.tscn" id="3_5a7ea"]
+
+[node name="World" type="Node2D" unique_id=1477460474]
+
+[node name="GunPart" parent="." unique_id=266467883 instance=ExtResource("3_5a7ea")]
+position = Vector2(480, 358)
+
+[node name="Player" parent="." unique_id=1944946535 instance=ExtResource("1_a02cp")]
+position = Vector2(976, 526)
+speed = null
+rotation_speed = null
+rotation_steps = null
+power = null
+durability = null
