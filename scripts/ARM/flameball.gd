@@ -3,6 +3,7 @@ extends Area2D
 var speed: float = 0.0
 var dying: bool = false
 
+var damage: int = 1
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 
@@ -22,3 +23,9 @@ func _on_timeout() -> void:
 func _on_anim_finished() -> void:
 	if anim.animation == "death":
 		queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		area.take_damage(damage)
+		timer.stop()
+		_on_timeout()

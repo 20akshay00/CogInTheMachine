@@ -1,11 +1,17 @@
 extends CharacterBody2D
 class_name Player
 
+signal stats_changed(current_scrap, goal_scrap, level, power)
+
+@export var power: int = 10
+@export var scrap_count: int = 0
+@export var upgrade_level: int = 0
+@export var scrap_to_level: int = 50
+
 @export var CONTROLLER_MODE = false
 @export var speed: float = 300.0
 @export var rotation_speed: float = 20.0
-@export var rotation_steps: int = 8 
-@export var power: int = 10
+@export var rotation_steps: int = 16
 
 @onready var L_ARM: Node2D = $"L-ARM"
 @onready var R_ARM: Node2D = $"R-ARM"
@@ -20,6 +26,9 @@ var R_ARM_part: ARMPart = null
 
 # closest part (or the one selected with mouse)
 var active_target: ARMPart = null
+
+func _ready() -> void:
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Input.get_vector("left", "right", "up", "down") * speed
@@ -105,6 +114,18 @@ func _handle_aiming(delta: float) -> void:
 	var step = TAU / rotation_steps
 	L_ARM.rotation = lerp_angle(L_ARM.rotation, round(l_target/step)*step, rotation_speed * delta)
 	R_ARM.rotation = lerp_angle(R_ARM.rotation, round(r_target/step)*step, rotation_speed * delta)
+
+func collect_scrap(amount: int) -> void:
+	scrap_count += amount
+	if scrap_count >= scrap_to_level:
+		_level_up()
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power)
+
+func _level_up() -> void:
+	scrap_count -= scrap_to_level
+	upgrade_level += 1
+	power += 2
+	scrap_to_level = int(scrap_to_level * 1.2)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area is ARMPart: area.on_entered_pickup_range()

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dypm38oh11pqx"]
+
+[ext_resource type="Script" uid="uid://b242jcfelurm1" path="res://scripts/projectile_variant_1.gd" id="1_7v46p"]
+[ext_resource type="Texture2D" uid="uid://py533bi2bpno" path="res://assets/art/projectile_spritesheet_v1.png" id="2_6wefy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8fcr"]
+radius = 23.086792
+
+[node name="ProjectileVariant1" type="Area2D" unique_id=643401877]
+script = ExtResource("1_7v46p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401999053]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_6wefy")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693250380]
+shape = SubResource("CircleShape2D_c8fcr")
+
+[node name="Timer" type="Timer" parent="." unique_id=211098633]
+one_shot = true

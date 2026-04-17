@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://co83mclp8nvh6"]
+
+[ext_resource type="Script" uid="uid://bpflghuqfok30" path="res://scripts/scrap_bot.gd" id="1_nfhjf"]
+[ext_resource type="Texture2D" uid="uid://din843em3i05s" path="res://assets/art/prototype_scrap_bot_spritesheet_v3.png" id="1_v4nj3"]
+[ext_resource type="PackedScene" uid="uid://dit1jnho2028h" path="res://scenes/scrap.tscn" id="2_lklk2"]
+[ext_resource type="PackedScene" uid="uid://dypm38oh11pqx" path="res://scenes/projectile_variant_1.tscn" id="2_m5x7h"]
+[ext_resource type="Shader" uid="uid://cwp1abw5dn1je" path="res://assets/shaders/flash.gdshader" id="4_x1kqi"]
+[ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="5_xeykw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjg85"]
+shader = ExtResource("4_x1kqi")
+shader_parameter/flash_intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfhjf"]
+radius = 35.014282
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xeykw"]
+radius = 34.0147
+
+[node name="ScrapBot" type="CharacterBody2D" unique_id=1842318705]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_nfhjf")
+projectile_scene = ExtResource("2_m5x7h")
+scrap_scene = ExtResource("2_lklk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=311324283]
+material = SubResource("ShaderMaterial_bjg85")
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_v4nj3")
+hframes = 9
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1216242118]
+shape = SubResource("CircleShape2D_nfhjf")
+
+[node name="Hitbox" parent="." unique_id=923278192 instance=ExtResource("5_xeykw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2074746955]
+shape = SubResource("CircleShape2D_xeykw")

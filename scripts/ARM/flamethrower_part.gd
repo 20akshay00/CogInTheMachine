@@ -6,6 +6,7 @@ class_name FlamethrowerPart
 @export var projectile_duration: float = 0.75
 @export var fire_rate: float = 0.5
 @export var barrel_length: float = 50.0
+@export var damage: int = 1
 
 @onready var fire_timer: Timer = $Timer
 
@@ -19,6 +20,7 @@ func attack() -> void:
 	
 	fire_timer.start()
 	var p = flameball_scene.instantiate()
+	p.damage = damage
 	get_tree().current_scene.add_child(p)
 	
 	p.global_transform = global_transform

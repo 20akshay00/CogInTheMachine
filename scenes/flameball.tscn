@@ -62,6 +62,7 @@ animations = [{
 radius = 18.027756
 
 [node name="Flameball" type="Area2D" unique_id=1344423761]
+collision_mask = 5
 script = ExtResource("1_6ny8y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=97548118]
@@ -76,3 +77,5 @@ shape = SubResource("CircleShape2D_em71g")
 [node name="Timer" type="Timer" parent="." unique_id=534827314]
 wait_time = 5.0
 one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

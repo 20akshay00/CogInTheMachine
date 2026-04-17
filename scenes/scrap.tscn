@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dit1jnho2028h"]
+
+[ext_resource type="Script" uid="uid://c8aibd7o7ouob" path="res://scenes/scrap.gd" id="1_w44v5"]
+[ext_resource type="Texture2D" uid="uid://bhuc3jmgkdd3" path="res://assets/art/prototype_scraps_spritesheet_v3.png" id="1_wgfcx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wgfcx"]
+radius = 24.020824
+
+[node name="Scrap" type="Area2D" unique_id=945725381]
+collision_layer = 16
+script = ExtResource("1_w44v5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=899993543]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_wgfcx")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=20332870]
+shape = SubResource("CircleShape2D_wgfcx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
