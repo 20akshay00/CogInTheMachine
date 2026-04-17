@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dfy1a50hh2nvn" path="res://scenes/player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://c8jinok4hoijd" path="res://scripts/ui.gd" id="1_k0juu"]
+[ext_resource type="Texture2D" uid="uid://b8yesiwl52r4r" path="res://assets/art/ui/prototype_UI_background_v1.png" id="2_71j4m"]
 [ext_resource type="PackedScene" uid="uid://co83mclp8nvh6" path="res://scenes/scrap_bot.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="3_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://bssre54bjyd2j" path="res://assets/art/ui/protype_UI_large_circle_panel_v1.png" id="6_qfnet"]
 
 [node name="World" type="Node2D" unique_id=1477460474]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2086481064]
+visible = false
 script = ExtResource("1_k0juu")
 
 [node name="ScrapBar" type="TextureProgressBar" parent="UI" unique_id=367400674]
@@ -21,6 +24,30 @@ offset_bottom = 23.0
 [node name="PowerLabel" type="Label" parent="UI" unique_id=1438134126]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="PanelBackground" type="TextureRect" parent="UI" unique_id=305815205]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -261.0
+offset_right = 48.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+size_flags_vertical = 8
+texture = ExtResource("2_71j4m")
+
+[node name="ColorRect" type="TextureRect" parent="UI" unique_id=760642798]
+offset_left = 249.0
+offset_top = 895.0
+offset_right = 377.0
+offset_bottom = 959.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_qfnet")
 
 [node name="Scraps" type="Node2D" parent="." unique_id=2073898729]
 
@@ -38,3 +65,12 @@ position = Vector2(976, 526)
 
 [node name="ScrapBot" parent="." unique_id=1842318705 instance=ExtResource("3_4wyf3")]
 position = Vector2(73, 35)
+
+[node name="ScrapBot2" parent="." unique_id=1874966302 instance=ExtResource("3_4wyf3")]
+position = Vector2(-57, 902)
+
+[node name="ScrapBot3" parent="." unique_id=493056542 instance=ExtResource("3_4wyf3")]
+position = Vector2(1420, 149)
+
+[node name="ScrapBot4" parent="." unique_id=1756965142 instance=ExtResource("3_4wyf3")]
+position = Vector2(1664, 916)
