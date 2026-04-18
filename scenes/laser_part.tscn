@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://blskfl81uk3ty"]
+
+[ext_resource type="Script" uid="uid://1dfgfl7powo8" path="res://scripts/laser_part.gd" id="1_3gjmq"]
+[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_beatg"]
+[ext_resource type="Shader" uid="uid://dw3qeliulo4r2" path="res://assets/shaders/energy_beam.gdshader" id="4_kyj2x"]
+[ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="5_kyj2x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kvtf"]
+resource_local_to_scene = true
+shader = ExtResource("5_kyj2x")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.3
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bjgd"]
+shader = ExtResource("4_kyj2x")
+shader_parameter/beam_color = Color(0.3, 0.5, 1, 1)
+shader_parameter/flicker_speed = 20.0
+shader_parameter/core_width = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gjmq"]
+radius = 36.05551
+
+[node name="LaserPart" type="Area2D" unique_id=298505101]
+script = ExtResource("1_3gjmq")
+durability = 10.0
+time_to_damage = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2084471813]
+material = SubResource("ShaderMaterial_0kvtf")
+position = Vector2(24.999998, 1.0000038)
+rotation = -1.5707964
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_beatg")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 32)
+
+[node name="Timer" type="Timer" parent="." unique_id=1977691846]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=175442478]
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1918350073]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8bjgd")
+points = PackedVector2Array(68, 24)
+width = 30.0
+texture_mode = 1
+end_cap_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=460452392]
+shape = SubResource("CircleShape2D_3gjmq")
