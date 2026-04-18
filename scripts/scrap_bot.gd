@@ -20,6 +20,9 @@ var _is_stepping: bool = false
 var _scurry_dir: Vector2 = Vector2.ZERO
 var _is_dying: bool = false # FIXED: Was true in your snippet
 
+func _ready() -> void:
+	if sprite.material: sprite.material = sprite.material.duplicate()
+
 func _physics_process(delta: float) -> void:
 	if not player or _is_dying: return # FIXED: Guard added
 	

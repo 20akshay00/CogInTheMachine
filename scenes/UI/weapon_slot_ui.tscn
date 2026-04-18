@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://b3mqy6t26avws"]
+
+[ext_resource type="Script" uid="uid://c67uv6gwnrntw" path="res://scripts/ui/weapon_slot_ui.gd" id="1_22ny2"]
+[ext_resource type="PackedScene" uid="uid://w047glny51it" path="res://scenes/UI/light_bulb_ui.tscn" id="1_tj56d"]
+[ext_resource type="Texture2D" uid="uid://cj7fbsafmdydi" path="res://assets/art/ui/prototype_UI_large_pipe_v1.png" id="2_22ny2"]
+[ext_resource type="Script" uid="uid://bh5rbr3hw00nb" path="res://scripts/ui/weapon_display.gd" id="3_n53nq"]
+[ext_resource type="Texture2D" uid="uid://2je1afka3q1d" path="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png" id="4_ac0x7"]
+[ext_resource type="Shader" uid="uid://dj6jcqtpcc3i1" path="res://assets/shaders/fill_progress_bar.gdshader" id="5_b7adj"]
+[ext_resource type="Texture2D" uid="uid://djd4kppharw21" path="res://assets/art/ui/prototype_UI_large_circle_fill_v1.png" id="6_ltadg"]
+[ext_resource type="Texture2D" uid="uid://cj2jx47gsyiom" path="res://assets/art/ui/prototype_UI_large_circle_decal_v1.png" id="7_yx3ds"]
+[ext_resource type="Texture2D" uid="uid://cxcgnpf0ocykr" path="res://assets/art/textures/ui_text_box_decal.tres" id="8_lwwb6"]
+[ext_resource type="Texture2D" uid="uid://3xibhuhbwacg" path="res://assets/art/textures/ui_text_box_bg.tres" id="9_3fbme"]
+[ext_resource type="FontFile" uid="uid://t4iowydqkote" path="res://assets/fonts/SairaStencil-VariableFont_wdth,wght.ttf" id="10_nyuck"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo05s"]
+resource_local_to_scene = true
+shader = ExtResource("5_b7adj")
+shader_parameter/fill_level = 0.5550000263625
+shader_parameter/slosh_amount = 0.0
+shader_parameter/wave_intensity = 0.0370000017575
+shader_parameter/wave_frequency = 5.754000273315
+shader_parameter/wave_speed = 0.50000002375
+shader_parameter/phase_offset = 0.0
+shader_parameter/tint_color = Color(0, 0.26398855, 0.10081675, 1)
+
+[node name="WeaponSlotUI" type="Control" unique_id=1454238318]
+layout_mode = 3
+anchor_right = 0.069000006
+anchor_bottom = 0.19700001
+offset_left = 709.0
+offset_top = 901.0
+offset_right = 702.52
+offset_bottom = 816.24
+script = ExtResource("1_22ny2")
+
+[node name="EnergyDisplay" type="Control" parent="." unique_id=1845839632]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bulbs" type="HBoxContainer" parent="EnergyDisplay" unique_id=1329785276]
+z_index = 1
+layout_mode = 0
+offset_left = -169.0
+offset_top = 114.0
+offset_right = -25.0
+offset_bottom = 154.0
+metadata/_edit_group_ = true
+
+[node name="LightBulbUI" parent="EnergyDisplay/Bulbs" unique_id=190261272 instance=ExtResource("1_tj56d")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="EnergyDisplay/Bulbs" unique_id=1956847535]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LightBulbUI2" parent="EnergyDisplay/Bulbs" unique_id=1123754387 instance=ExtResource("1_tj56d")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="EnergyDisplay/Bulbs" unique_id=1750813431]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BulbPanel" type="TextureRect" parent="EnergyDisplay" unique_id=591886237]
+layout_mode = 0
+offset_left = -191.0
+offset_top = 65.0
+offset_right = -79.0
+offset_bottom = 97.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_22ny2")
+metadata/_edit_lock_ = true
+
+[node name="WeaponDisplay" type="Control" parent="." unique_id=364234416]
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -80.0
+offset_right = -81.0
+offset_bottom = -40.0
+script = ExtResource("3_n53nq")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="LargeCircleBG" type="TextureRect" parent="WeaponDisplay" unique_id=1631941748]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ac0x7")
+
+[node name="LargeCircleFG" type="TextureRect" parent="WeaponDisplay" unique_id=1722804874]
+modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
+material = SubResource("ShaderMaterial_xo05s")
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_ltadg")
+
+[node name="LargeCircleDecal" type="TextureRect" parent="WeaponDisplay" unique_id=791414952]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_yx3ds")
+
+[node name="Weapon" type="TextureRect" parent="WeaponDisplay" unique_id=287423388]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DataPanels" type="Control" parent="." unique_id=1119298774]
+anchors_preset = 0
+offset_left = -125.0
+offset_top = 118.0
+offset_right = -1.0
+offset_bottom = 154.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="DescriptionDecal" type="TextureRect" parent="DataPanels" unique_id=1285001205]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 38.0
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("8_lwwb6")
+
+[node name="DescriptionBG" type="TextureRect" parent="DataPanels" unique_id=267158400]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 38.0
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("9_3fbme")
+
+[node name="DescriptionLabel" type="Label" parent="DataPanels" unique_id=1750685263]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 3.0
+offset_right = 104.5
+offset_bottom = 32.5
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("10_nyuck")
+theme_override_font_sizes/font_size = 12
+text = "L-ARM"

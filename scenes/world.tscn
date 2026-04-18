@@ -2,28 +2,228 @@
 
 [ext_resource type="PackedScene" uid="uid://dfy1a50hh2nvn" path="res://scenes/player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://c8jinok4hoijd" path="res://scripts/ui.gd" id="1_k0juu"]
+[ext_resource type="Texture2D" uid="uid://c2jwxwemww1dl" path="res://assets/art/ui/prototype_UI_experience_bar_background_v1.png" id="2_2lf6f"]
 [ext_resource type="Texture2D" uid="uid://b8yesiwl52r4r" path="res://assets/art/ui/prototype_UI_background_v1.png" id="2_71j4m"]
+[ext_resource type="Texture2D" uid="uid://mjccsgfrskep" path="res://assets/art/ui/prototype_UI_health_pipe_v1.png" id="2_jhx03"]
+[ext_resource type="Texture2D" uid="uid://2je1afka3q1d" path="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png" id="3_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://co83mclp8nvh6" path="res://scenes/scrap_bot.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="3_5a7ea"]
-[ext_resource type="Texture2D" uid="uid://bssre54bjyd2j" path="res://assets/art/ui/protype_UI_large_circle_panel_v1.png" id="6_qfnet"]
+[ext_resource type="Texture2D" uid="uid://dt2pyph7tmau6" path="res://assets/art/ui/prototype_UI_experience_bar_decal_v1.png" id="3_7iits"]
+[ext_resource type="Texture2D" uid="uid://djd4kppharw21" path="res://assets/art/ui/prototype_UI_large_circle_fill_v1.png" id="4_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://nvrr8moiriik" path="res://assets/art/textures/ui_health_symbol.tres" id="4_7t5mc"]
+[ext_resource type="Texture2D" uid="uid://dtocv5hdox2n7" path="res://assets/art/ui/prototype_UI_experience_bar_fill_v1.png" id="4_oo54l"]
+[ext_resource type="PackedScene" uid="uid://w047glny51it" path="res://scenes/UI/light_bulb_ui.tscn" id="5_dss4m"]
+[ext_resource type="Texture2D" uid="uid://cj2jx47gsyiom" path="res://assets/art/ui/prototype_UI_large_circle_decal_v1.png" id="5_w7kh3"]
+[ext_resource type="FontFile" uid="uid://t4iowydqkote" path="res://assets/fonts/SairaStencil-VariableFont_wdth,wght.ttf" id="9_q5onr"]
+[ext_resource type="PackedScene" uid="uid://b3mqy6t26avws" path="res://scenes/UI/weapon_slot_ui.tscn" id="13_dss4m"]
+[ext_resource type="PackedScene" uid="uid://cgq7uwnkivhe3" path="res://scenes/elite_bot.tscn" id="17_7t5mc"]
 
 [node name="World" type="Node2D" unique_id=1477460474]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2086481064]
-visible = false
 script = ExtResource("1_k0juu")
 
-[node name="ScrapBar" type="TextureProgressBar" parent="UI" unique_id=367400674]
+[node name="ScrapBar" type="Control" parent="UI" unique_id=1891779160]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LevelLabel" type="Label" parent="UI" unique_id=955043520]
+[node name="ProgressBar" type="TextureProgressBar" parent="UI/ScrapBar" unique_id=367400674]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 32.275
+anchor_top = 0.675
+anchor_right = 35.92502
+anchor_bottom = 0.675
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+value = 50.0
+texture_under = ExtResource("2_2lf6f")
+texture_over = ExtResource("3_7iits")
+texture_progress = ExtResource("4_oo54l")
+metadata/_edit_use_anchors_ = true
 
-[node name="PowerLabel" type="Label" parent="UI" unique_id=1438134126]
+[node name="LevelDisplay" type="Control" parent="UI/ScrapBar" unique_id=747417388]
+layout_mode = 1
+anchor_left = 43.625
+anchor_top = 0.175
+anchor_right = 43.625
+anchor_bottom = 0.175
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="LargeCircleBG" type="TextureRect" parent="UI/ScrapBar/LevelDisplay" unique_id=1568213707]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_4mrxx")
+metadata/_edit_use_anchors_ = true
+
+[node name="LargeCircleFG" type="TextureRect" parent="UI/ScrapBar/LevelDisplay" unique_id=1207348112]
+modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_7r4gi")
+metadata/_edit_use_anchors_ = true
+
+[node name="LargeCircleDecal" type="TextureRect" parent="UI/ScrapBar/LevelDisplay" unique_id=1548711912]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_w7kh3")
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelLabel" type="Label" parent="UI/ScrapBar/LevelDisplay" unique_id=1636284267]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 53.0
+offset_right = 122.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("9_q5onr")
+theme_override_font_sizes/font_size = 32
+text = "LVL 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="Control" parent="UI" unique_id=2035756096]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 58.0
+offset_bottom = 49.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Scaffolding" type="TextureProgressBar" parent="UI/HealthBar" unique_id=1234231587]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 13.999996
+offset_right = 316.0
+offset_bottom = 53.999996
+scale = Vector2(2.5, 2.5)
+texture_over = ExtResource("2_jhx03")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bulbs" type="HBoxContainer" parent="UI/HealthBar" unique_id=37358703]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 92.0
+offset_right = 561.0
+offset_bottom = 132.0
+scale = Vector2(-1, -1)
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LightBulbUI2" parent="UI/HealthBar/Bulbs" unique_id=190261272 instance=ExtResource("5_dss4m")]
+layout_mode = 2
+glow_hue = Color(1, 0.28767756, 0.24006867, 1)
+symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+symbol = ExtResource("4_7t5mc")
+symbol_offset = Vector2(3, 0)
+
+[node name="VSeparator" type="VSeparator" parent="UI/HealthBar/Bulbs" unique_id=1053413937]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LightBulbUI3" parent="UI/HealthBar/Bulbs" unique_id=1175810554 instance=ExtResource("5_dss4m")]
+layout_mode = 2
+glow_hue = Color(1, 0.28767756, 0.24006867, 1)
+symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+symbol = ExtResource("4_7t5mc")
+symbol_offset = Vector2(3, 0)
+
+[node name="VSeparator2" type="VSeparator" parent="UI/HealthBar/Bulbs" unique_id=1838707206]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LightBulbUI4" parent="UI/HealthBar/Bulbs" unique_id=1248612693 instance=ExtResource("5_dss4m")]
+layout_mode = 2
+glow_hue = Color(1, 0.28767756, 0.24006867, 1)
+symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+symbol = ExtResource("4_7t5mc")
+symbol_offset = Vector2(3, 0)
+
+[node name="VSeparator3" type="VSeparator" parent="UI/HealthBar/Bulbs" unique_id=35255451]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LightBulbUI5" parent="UI/HealthBar/Bulbs" unique_id=321284504 instance=ExtResource("5_dss4m")]
+layout_mode = 2
+glow_hue = Color(1, 0.28767756, 0.24006867, 1)
+symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+symbol = ExtResource("4_7t5mc")
+symbol_offset = Vector2(3, 0)
+
+[node name="VSeparator4" type="VSeparator" parent="UI/HealthBar/Bulbs" unique_id=678374443]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LightBulbUI6" parent="UI/HealthBar/Bulbs" unique_id=96409739 instance=ExtResource("5_dss4m")]
+layout_mode = 2
+glow_hue = Color(1, 0.28767756, 0.24006867, 1)
+symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+symbol = ExtResource("4_7t5mc")
+symbol_offset = Vector2(3, 0)
+
+[node name="VSeparator5" type="VSeparator" parent="UI/HealthBar/Bulbs" unique_id=1576327218]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PowerDisplay" type="Control" parent="UI/HealthBar" unique_id=175837402]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="LargeCircleBG" type="TextureRect" parent="UI/HealthBar/PowerDisplay" unique_id=1499977789]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_4mrxx")
+metadata/_edit_use_anchors_ = true
+
+[node name="LargeCircleFG" type="TextureRect" parent="UI/HealthBar/PowerDisplay" unique_id=1721767503]
+modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_7r4gi")
+metadata/_edit_use_anchors_ = true
+
+[node name="LargeCircleDecal" type="TextureRect" parent="UI/HealthBar/PowerDisplay" unique_id=1926829861]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_w7kh3")
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerLabel" type="Label" parent="UI/HealthBar/PowerDisplay" unique_id=608494794]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 53.0
+offset_right = 122.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("9_q5onr")
+theme_override_font_sizes/font_size = 32
+text = "100%
+"
 
 [node name="PanelBackground" type="TextureRect" parent="UI" unique_id=305815205]
 anchors_preset = 7
@@ -31,40 +231,55 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -368.0
-offset_top = -261.0
-offset_right = 48.0
-offset_bottom = -134.0
+offset_left = -526.0
+offset_top = -283.0
+offset_right = -110.0
+offset_bottom = -156.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 size_flags_vertical = 8
 texture = ExtResource("2_71j4m")
 
-[node name="ColorRect" type="TextureRect" parent="UI" unique_id=760642798]
-offset_left = 249.0
-offset_top = 895.0
-offset_right = 377.0
-offset_bottom = 959.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_qfnet")
+[node name="L-ARM SlotUI" parent="UI" unique_id=1454238318 instance=ExtResource("13_dss4m")]
+offset_left = 722.0
+offset_top = 913.0
+offset_right = 715.52
+offset_bottom = 828.24
+
+[node name="P-MODULE SlotUI2" parent="UI" unique_id=83699518 instance=ExtResource("13_dss4m")]
+offset_left = 1000.0
+offset_top = 910.0
+offset_right = 993.52
+offset_bottom = 825.24
+slot_label = "P-MOD"
+
+[node name="R-ARM SlotUI3" parent="UI" unique_id=1700856667 instance=ExtResource("13_dss4m")]
+offset_left = 1279.0
+offset_top = 908.0
+offset_right = 1272.52
+offset_bottom = 823.24
+slot_label = "R-ARM"
 
 [node name="Scraps" type="Node2D" parent="." unique_id=2073898729]
 
 [node name="FlamethrowerPart" parent="." unique_id=266467883 instance=ExtResource("3_5a7ea")]
-position = Vector2(635, 812)
+position = Vector2(574, 456)
 
 [node name="FlamethrowerPart2" parent="." unique_id=2000541073 instance=ExtResource("3_5a7ea")]
 position = Vector2(362, 346)
 
 [node name="FlamethrowerPart3" parent="." unique_id=52656241 instance=ExtResource("3_5a7ea")]
-position = Vector2(415, 630)
+position = Vector2(383, 669)
 
 [node name="Player" parent="." unique_id=1944946535 instance=ExtResource("1_a02cp")]
 position = Vector2(976, 526)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=372710337]
+position_smoothing_enabled = true
+
 [node name="ScrapBot" parent="." unique_id=1842318705 instance=ExtResource("3_4wyf3")]
-position = Vector2(73, 35)
+position = Vector2(149, 372)
 
 [node name="ScrapBot2" parent="." unique_id=1874966302 instance=ExtResource("3_4wyf3")]
 position = Vector2(-57, 902)
@@ -74,3 +289,6 @@ position = Vector2(1420, 149)
 
 [node name="ScrapBot4" parent="." unique_id=1756965142 instance=ExtResource("3_4wyf3")]
 position = Vector2(1664, 916)
+
+[node name="EliteBot" parent="." unique_id=386290017 instance=ExtResource("17_7t5mc")]
+position = Vector2(1483, 430)

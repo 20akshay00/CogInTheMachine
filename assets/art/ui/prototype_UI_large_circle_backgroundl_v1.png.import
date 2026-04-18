@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s0ppnjhhqttr"
-path="res://.godot/imported/prototype_small_circle_panel_v1.png-853ddc9d71937e741678da9a718ee00c.ctex"
+uid="uid://2je1afka3q1d"
+path="res://.godot/imported/prototype_UI_large_circle_backgroundl_v1.png-734d208f4a4b83e7f19983f0688585ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/prototype_small_circle_panel_v1.png"
-dest_files=["res://.godot/imported/prototype_small_circle_panel_v1.png-853ddc9d71937e741678da9a718ee00c.ctex"]
+source_file="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png"
+dest_files=["res://.godot/imported/prototype_UI_large_circle_backgroundl_v1.png-734d208f4a4b83e7f19983f0688585ac.ctex"]
 
 [params]
 

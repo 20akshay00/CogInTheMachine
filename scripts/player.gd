@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	if R_ARM_part and Input.is_action_pressed("attack_right_arm"):
 		R_ARM_part.attack()
 
-	# EQUIP
+	# PRE-EQUIP
 	var new_target = _get_best_target()
 	if new_target != active_target:
 		if active_target: active_target.set_sprite_highlight(false)
@@ -65,6 +65,14 @@ func _process(delta: float) -> void:
 	if active_target:
 		var slot = request_arm_equip(active_target)
 		if slot: active_target._on_equip_success(slot)
+
+	# UNEQUIP
+	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_left_arm") and L_ARM_part:
+		L_ARM_part.eject()
+		L_ARM_part = null
+	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_right_arm") and R_ARM_part:
+		R_ARM_part.eject()
+		R_ARM_part = null
 
 func request_arm_equip(part: ARMPart) -> Node2D:
 	var l_req := Input.is_action_just_pressed("equip_left_arm")
@@ -111,9 +119,13 @@ func _handle_aiming(delta: float) -> void:
 	if joy_dir.length() > 0.1:
 		l_target = joy_dir.angle()
 		r_target = l_target
-	var step = TAU / rotation_steps
-	L_ARM.rotation = lerp_angle(L_ARM.rotation, round(l_target/step)*step, rotation_speed * delta)
-	R_ARM.rotation = lerp_angle(R_ARM.rotation, round(r_target/step)*step, rotation_speed * delta)
+
+	#var step = TAU / rotation_steps
+	#L_ARM.rotation = lerp_angle(L_ARM.rotation, round(l_target/step)*step, rotation_speed * delta)
+	#R_ARM.rotation = lerp_angle(R_ARM.rotation, round(r_target/step)*step, rotation_speed * delta)
+
+	L_ARM.rotation = lerp_angle(L_ARM.rotation, l_target, rotation_speed * delta)
+	R_ARM.rotation = lerp_angle(R_ARM.rotation, r_target, rotation_speed * delta)
 
 func collect_scrap(amount: int) -> void:
 	scrap_count += amount

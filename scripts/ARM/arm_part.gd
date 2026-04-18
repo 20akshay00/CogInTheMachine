@@ -12,11 +12,15 @@ var select_tween: Tween
 @onready var base_sprite_scale: Vector2 = sprite.scale
 @onready var base_sprite_rot: float = sprite.rotation
 
-var is_equipped: bool = false
+@export var is_equipped: bool = false
 var can_fire: bool = false
 var in_pickup_range: bool = false
 var is_mouse_hover: bool = false
 var is_selected: bool = false 
+
+@export var eject_distance: float = 200.0
+@export var eject_rotation_offset: float = 4.0
+@export var eject_duration: float = 0.6
 
 func _ready() -> void:
 	if sprite.material: sprite.material = sprite.material.duplicate()
@@ -97,6 +101,39 @@ func _on_equip_success(slot: Node2D) -> void:
 func set_sprite_highlight(state: bool) -> void:
 	if state: sprite.material.set_shader_parameter("line_color", DEFAULT_COLOR)
 	sprite.material.set_shader_parameter("active", state)
+
+# also destroys
+func eject() -> void:
+	is_equipped = false
+	can_fire = false
+	input_pickable = false
+	set_collision_layer_value(2, false)
+	
+	if select_tween: select_tween.kill()
+	
+	var world = get_tree().current_scene
+	reparent(world)
+	
+	var direction = Vector2.RIGHT.rotated(global_rotation)
+	var target_pos = global_position + (direction * eject_distance)
+	var target_rot = global_rotation + eject_rotation_offset
+	
+	var t = create_tween().set_parallel().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "global_position", target_pos, eject_duration)
+	t.tween_property(self, "global_rotation", target_rot, eject_duration)
+	t.chain().tween_property(self, "modulate:a", 0.0, 1.)
+	t.chain().tween_callback(queue_free)
+
+func drop() -> void:
+	is_equipped = false
+	can_fire = false
+	input_pickable = true
+	set_collision_layer_value(2, true)
+	
+	var world = get_tree().current_scene
+	reparent(world)
+	
+	_update_state()
 
 func attack() -> void:
 	pass
