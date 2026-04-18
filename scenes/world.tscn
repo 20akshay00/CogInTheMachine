@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://mjccsgfrskep" path="res://assets/art/ui/prototype_UI_health_pipe_v1.png" id="2_jhx03"]
 [ext_resource type="Texture2D" uid="uid://2je1afka3q1d" path="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png" id="3_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://co83mclp8nvh6" path="res://scenes/scrap_bot.tscn" id="3_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://dt2pyph7tmau6" path="res://assets/art/ui/prototype_UI_experience_bar_decal_v1.png" id="3_7iits"]
 [ext_resource type="Texture2D" uid="uid://djd4kppharw21" path="res://assets/art/ui/prototype_UI_large_circle_fill_v1.png" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://nvrr8moiriik" path="res://assets/art/textures/ui_health_symbol.tres" id="4_7t5mc"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cj2jx47gsyiom" path="res://assets/art/ui/prototype_UI_large_circle_decal_v1.png" id="5_w7kh3"]
 [ext_resource type="FontFile" uid="uid://t4iowydqkote" path="res://assets/fonts/SairaStencil-VariableFont_wdth,wght.ttf" id="9_q5onr"]
 [ext_resource type="PackedScene" uid="uid://b3mqy6t26avws" path="res://scenes/UI/weapon_slot_ui.tscn" id="13_dss4m"]
+[ext_resource type="PackedScene" uid="uid://c3qac151lfrt8" path="res://scenes/generic_blaster_part.tscn" id="14_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://cgq7uwnkivhe3" path="res://scenes/elite_bot.tscn" id="17_7t5mc"]
 
 [node name="World" type="Node2D" unique_id=1477460474]
@@ -121,10 +121,10 @@ scale = Vector2(-1, -1)
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
-[node name="LightBulbUI2" parent="UI/HealthBar/Bulbs" unique_id=190261272 instance=ExtResource("5_dss4m")]
+[node name="LightBulbUI" parent="UI/HealthBar/Bulbs" unique_id=190261272 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(1, 0.28767756, 0.24006867, 1)
-symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
+symbol_hue = Color(0.515627, 0, 0, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -133,10 +133,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LightBulbUI3" parent="UI/HealthBar/Bulbs" unique_id=1175810554 instance=ExtResource("5_dss4m")]
+[node name="LightBulbUI2" parent="UI/HealthBar/Bulbs" unique_id=2113398350 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(1, 0.28767756, 0.24006867, 1)
-symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
+symbol_hue = Color(0.515627, 0, 0, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -145,10 +145,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LightBulbUI4" parent="UI/HealthBar/Bulbs" unique_id=1248612693 instance=ExtResource("5_dss4m")]
+[node name="LightBulbUI3" parent="UI/HealthBar/Bulbs" unique_id=1023216862 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(1, 0.28767756, 0.24006867, 1)
-symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
+symbol_hue = Color(0.515627, 0, 0, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -157,10 +157,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LightBulbUI5" parent="UI/HealthBar/Bulbs" unique_id=321284504 instance=ExtResource("5_dss4m")]
+[node name="LightBulbUI4" parent="UI/HealthBar/Bulbs" unique_id=1468361850 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(1, 0.28767756, 0.24006867, 1)
-symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
+symbol_hue = Color(0.515627, 0, 0, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -169,10 +169,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LightBulbUI6" parent="UI/HealthBar/Bulbs" unique_id=96409739 instance=ExtResource("5_dss4m")]
+[node name="LightBulbUI5" parent="UI/HealthBar/Bulbs" unique_id=702806210 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(1, 0.28767756, 0.24006867, 1)
-symbol_hue = Color(0.7897582, 7.693701e-05, 0.039076682, 1)
+glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
+symbol_hue = Color(0.515627, 0, 0, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -261,34 +261,27 @@ offset_right = 1272.52
 offset_bottom = 823.24
 slot_label = "R-ARM"
 
+[node name="Parts" type="Node2D" parent="." unique_id=2104984358]
+
+[node name="GenericBlasterPart" parent="Parts" unique_id=266467883 instance=ExtResource("14_7t5mc")]
+position = Vector2(525, 507)
+
 [node name="Scraps" type="Node2D" parent="." unique_id=2073898729]
 
-[node name="FlamethrowerPart" parent="." unique_id=266467883 instance=ExtResource("3_5a7ea")]
-position = Vector2(574, 456)
+[node name="ScrapBot3" parent="." unique_id=493056542 instance=ExtResource("3_4wyf3")]
+position = Vector2(1420, 149)
 
-[node name="FlamethrowerPart2" parent="." unique_id=2000541073 instance=ExtResource("3_5a7ea")]
-position = Vector2(362, 346)
+[node name="ScrapBot5" parent="." unique_id=496711657 instance=ExtResource("3_4wyf3")]
+position = Vector2(1198, -133)
 
-[node name="FlamethrowerPart3" parent="." unique_id=52656241 instance=ExtResource("3_5a7ea")]
-position = Vector2(383, 669)
+[node name="ScrapBot4" parent="." unique_id=1756965142 instance=ExtResource("3_4wyf3")]
+position = Vector2(1664, 916)
+
+[node name="EliteBot3" parent="." unique_id=1045875192 instance=ExtResource("17_7t5mc")]
+position = Vector2(-435, 795)
 
 [node name="Player" parent="." unique_id=1944946535 instance=ExtResource("1_a02cp")]
 position = Vector2(976, 526)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=372710337]
 position_smoothing_enabled = true
-
-[node name="ScrapBot" parent="." unique_id=1842318705 instance=ExtResource("3_4wyf3")]
-position = Vector2(149, 372)
-
-[node name="ScrapBot2" parent="." unique_id=1874966302 instance=ExtResource("3_4wyf3")]
-position = Vector2(-57, 902)
-
-[node name="ScrapBot3" parent="." unique_id=493056542 instance=ExtResource("3_4wyf3")]
-position = Vector2(1420, 149)
-
-[node name="ScrapBot4" parent="." unique_id=1756965142 instance=ExtResource("3_4wyf3")]
-position = Vector2(1664, 916)
-
-[node name="EliteBot" parent="." unique_id=386290017 instance=ExtResource("17_7t5mc")]
-position = Vector2(1483, 430)

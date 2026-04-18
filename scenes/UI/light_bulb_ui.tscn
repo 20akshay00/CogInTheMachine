@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://w047glny51it"]
 
 [ext_resource type="Texture2D" uid="uid://c7uqi6cyk6r62" path="res://assets/art/textures/bulb_bg.tres" id="1_3ltgk"]
-[ext_resource type="Script" uid="uid://cek7y51j413v8" path="res://scripts/UI/light_bulb_ui.gd" id="1_y30g5"]
+[ext_resource type="Script" uid="uid://cek7y51j413v8" path="res://scripts/ui/light_bulb_ui.gd" id="1_y30g5"]
 [ext_resource type="Texture2D" uid="uid://du3bd0b7ulg7m" path="res://assets/art/textures/bulb_fg.tres" id="2_y30g5"]
 [ext_resource type="Texture2D" uid="uid://bct1bjggqkctn" path="res://assets/art/textures/bulb_light.tres" id="3_5fvd7"]
 [ext_resource type="Texture2D" uid="uid://dxwacr3kajyey" path="res://assets/art/textures/ui_power_symbol.tres" id="4_v47a5"]
@@ -14,9 +14,6 @@ offset_top = 114.0
 offset_right = -124.0
 offset_bottom = 154.0
 script = ExtResource("1_y30g5")
-glow_hue = Color(1, 1, 0.5372549, 1)
-symbol_hue = Color(0.99601716, 0.99999994, 0.68015975, 1)
-symbol = ExtResource("4_v47a5")
 metadata/_edit_group_ = true
 
 [node name="BulbBG" type="TextureRect" parent="." unique_id=450537921]

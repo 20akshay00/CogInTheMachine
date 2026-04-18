@@ -20,8 +20,11 @@ var _is_stepping: bool = false
 var _scurry_dir: Vector2 = Vector2.ZERO
 var _is_dying: bool = false # FIXED: Was true in your snippet
 
+var projectile_collision_mask: int = 0
+
 func _ready() -> void:
 	if sprite.material: sprite.material = sprite.material.duplicate()
+	projectile_collision_mask |= (1 << 5)
 
 func _physics_process(delta: float) -> void:
 	if not player or _is_dying: return # FIXED: Guard added
@@ -62,6 +65,7 @@ func _handle_shooting(delta: float) -> void:
 func _shoot() -> void:
 	if not projectile_scene: return
 	var p = projectile_scene.instantiate()
+	p.collision_mask = projectile_collision_mask
 	get_tree().current_scene.add_child(p)
 	p.global_position = global_position
 	p.global_rotation = global_position.direction_to(player.global_position).angle()
@@ -92,8 +96,8 @@ func _hit_animation() -> void:
 func _die() -> void:
 	_is_dying = true
 	velocity = Vector2.ZERO
-	collision_layer = 0
-	collision_mask = 0
+	$Hitbox.set_deferred("monitorable", false)
+
 	
 	await _play_death_animation()
 	

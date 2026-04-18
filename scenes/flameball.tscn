@@ -62,7 +62,8 @@ animations = [{
 radius = 18.027756
 
 [node name="Flameball" type="Area2D" unique_id=1344423761]
-collision_mask = 5
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_6ny8y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=97548118]

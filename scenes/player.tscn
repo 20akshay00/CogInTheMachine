@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://dfy1a50hh2nvn"]
 
+[ext_resource type="Shader" uid="uid://cwp1abw5dn1je" path="res://assets/shaders/flash.gdshader" id="1_smehm"]
 [ext_resource type="Texture2D" uid="uid://cueyehijrivrr" path="res://assets/art/protototype_body_spritesheet_v3.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://mlv6pksspoii" path="res://scripts/player.gd" id="1_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://cfxo4luc6212x" path="res://assets/art/prototype_module_v3.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://2afwqn6nfvum" path="res://assets/art/prototype_right_arm_spritesheet_v3.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bshtn7buhl8lo" path="res://assets/art/prototype_left_arm_spritesheet_v3.png" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://c0a2rc7cn4rcf" path="res://assets/art/prototype_head_spritesheet_v3.png" id="7_3smsa"]
+[ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="7_fjrip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
+shader = ExtResource("1_smehm")
+shader_parameter/flash_intensity = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3smsa"]
 radius = 299.376
@@ -115,8 +121,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(60, 49)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
+radius = 32.24903
+
 [node name="Player" type="CharacterBody2D" unique_id=1944946535 groups=["Player"]]
-collision_mask = 0
+material = SubResource("ShaderMaterial_ur7pv")
 script = ExtResource("1_x3wgy")
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=653654433]
@@ -127,6 +136,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_3smsa")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=556315510]
+use_parent_material = true
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_fkybt")
 animation = &"idle"
@@ -134,6 +144,7 @@ frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="R-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=1332814684]
+use_parent_material = true
 position = Vector2(4.999997, -1.1324883e-06)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
@@ -141,6 +152,7 @@ animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="L-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=178841520]
+use_parent_material = true
 position = Vector2(-3.999999, 0.9999993)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_pu2lt")
@@ -152,6 +164,7 @@ position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_v0iea")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=829134615]
+use_parent_material = true
 position = Vector2(0, -10.999999)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("7_3smsa")
@@ -171,6 +184,12 @@ position = Vector2(-54, 5)
 
 [node name="R-ARM" type="Node2D" parent="." unique_id=1077335173]
 position = Vector2(57, 7)
+
+[node name="Hitbox" parent="." unique_id=923278192 instance=ExtResource("7_fjrip")]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=848732950]
+shape = SubResource("CircleShape2D_fjrip")
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]

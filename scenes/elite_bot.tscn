@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://cgq7uwnkivhe3"]
 
+[ext_resource type="Script" uid="uid://cela11vuba7lu" path="res://scripts/elite_bot.gd" id="1_6i141"]
+[ext_resource type="Shader" uid="uid://cwp1abw5dn1je" path="res://assets/shaders/flash.gdshader" id="1_kul3i"]
 [ext_resource type="Texture2D" uid="uid://cueyehijrivrr" path="res://assets/art/protototype_body_spritesheet_v3.png" id="1_wxp4o"]
 [ext_resource type="Texture2D" uid="uid://2afwqn6nfvum" path="res://assets/art/prototype_right_arm_spritesheet_v3.png" id="2_pohyj"]
-[ext_resource type="Texture2D" uid="uid://cfxo4luc6212x" path="res://assets/art/prototype_module_v3.png" id="3_4gdxl"]
 [ext_resource type="Texture2D" uid="uid://bshtn7buhl8lo" path="res://assets/art/prototype_left_arm_spritesheet_v3.png" id="3_qyth4"]
 [ext_resource type="Texture2D" uid="uid://c71t4cqs0bugs" path="res://assets/art/prototype_elite_head_v3.png" id="4_wxp4o"]
 [ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="6_qyth4"]
+[ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="8_t0nof"]
+[ext_resource type="PackedScene" uid="uid://c3qac151lfrt8" path="res://scenes/generic_blaster_part.tscn" id="8_ytt3t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytt3t"]
+shader = ExtResource("1_kul3i")
+shader_parameter/flash_intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kul3i"]
+radius = 34.0147
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("1_wxp4o")
@@ -113,14 +123,25 @@ animations = [{
 size = Vector2(60, 49)
 
 [node name="EliteBot" type="CharacterBody2D" unique_id=386290017]
+material = SubResource("ShaderMaterial_ytt3t")
+script = ExtResource("1_6i141")
+
+[node name="Hitbox" parent="." unique_id=923278192 instance=ExtResource("8_t0nof")]
+scale = Vector2(0.99999994, 0.99999994)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1628373320]
+shape = SubResource("CircleShape2D_kul3i")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=360216053]
+use_parent_material = true
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_t0nof")
 animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="R-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=634928159]
+use_parent_material = true
 position = Vector2(4.999997, -1.1324883e-06)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_kul3i")
@@ -128,6 +149,7 @@ animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="L-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=1222634313]
+use_parent_material = true
 position = Vector2(-3.999999, 0.9999993)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_ytt3t")
@@ -139,26 +161,23 @@ position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_txp8p")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=317179090]
+use_parent_material = true
 position = Vector2(0, -10.999999)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("4_wxp4o")
 hframes = 8
 frame = 2
 
-[node name="P-MODULE" type="Node2D" parent="." unique_id=740856775]
-position = Vector2(0, 28)
-
-[node name="DefaultModule" type="Sprite2D" parent="P-MODULE" unique_id=880044835]
-position = Vector2(5.9604645e-08, -1)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("3_4gdxl")
-
 [node name="L-ARM" type="Node2D" parent="." unique_id=1093629333]
 position = Vector2(-54, 5)
 
-[node name="FlamethrowerPart" parent="L-ARM" unique_id=266467883 instance=ExtResource("6_qyth4")]
-position = Vector2(23, 4)
-is_equipped = true
+[node name="GenericBlasterPart" parent="L-ARM" unique_id=266467883 instance=ExtResource("8_ytt3t")]
 
 [node name="R-ARM" type="Node2D" parent="." unique_id=1010285286]
 position = Vector2(57, 7)
+
+[node name="FlamethrowerPart" parent="R-ARM" unique_id=1322872791 instance=ExtResource("6_qyth4")]
+position = Vector2(-2, -1)
+is_equipped = true
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=442855878]

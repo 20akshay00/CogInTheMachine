@@ -1,8 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-signal stats_changed(current_scrap, goal_scrap, level, power)
+signal stats_changed(current_scrap, goal_scrap, level, power, health)
 
+@export var health: int = 5
 @export var power: int = 10
 @export var scrap_count: int = 0
 @export var upgrade_level: int = 0
@@ -28,7 +29,7 @@ var R_ARM_part: ARMPart = null
 var active_target: ARMPart = null
 
 func _ready() -> void:
-	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power)
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Input.get_vector("left", "right", "up", "down") * speed
@@ -83,9 +84,11 @@ func request_arm_equip(part: ARMPart) -> Node2D:
 	if part.power <= get_available_power():
 		if l_req and not L_ARM_part:
 			L_ARM_part = part
+			L_ARM_part.set_collision_masks([3])
 			return L_ARM
 		if r_req and not R_ARM_part:
 			R_ARM_part = part
+			R_ARM_part.set_collision_masks([3])
 			return R_ARM
 
 	part._on_equip_fail()
@@ -131,7 +134,7 @@ func collect_scrap(amount: int) -> void:
 	scrap_count += amount
 	if scrap_count >= scrap_to_level:
 		_level_up()
-	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power)
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
 
 func _level_up() -> void:
 	scrap_count -= scrap_to_level
@@ -144,3 +147,13 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 
 func _on_pickup_area_area_exited(area: Area2D) -> void:
 	if area is ARMPart: area.on_exited_pickup_range()
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
+	_hit_animation()
+
+func _hit_animation() -> void:
+	var tween = create_tween()
+	material.set_shader_parameter("flash_intensity", 1.0)
+	tween.tween_property(material, "shader_parameter/flash_intensity", 0.0, 0.3)

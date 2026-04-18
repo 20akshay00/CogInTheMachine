@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://y2lk4hqsaco"]
+[gd_scene format=3 uid="uid://c3qac151lfrt8"]
 
-[ext_resource type="Script" uid="uid://nf1cqtwo5g0f" path="res://scripts/ARM/flamethrower_part.gd" id="1_qr7t4"]
-[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_2fd3r"]
-[ext_resource type="PackedScene" uid="uid://bdv3bgmum76u0" path="res://scenes/flameball.tscn" id="2_wrcpe"]
+[ext_resource type="Script" uid="uid://dp15kjmvhj4nw" path="res://scripts/ARM/generic_blaster_part.gd" id="1_p3eq3"]
+[ext_resource type="PackedScene" uid="uid://dypm38oh11pqx" path="res://scenes/projectile_variant_1.tscn" id="2_0k51l"]
+[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_ekixx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fd3r"]
-size = Vector2(74, 36.5)
+size = Vector2(54, 36.5)
 
 [sub_resource type="Shader" id="Shader_e3cm6"]
 resource_local_to_scene = true
@@ -46,12 +46,14 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.50000002375
 shader_parameter/active = false
 
-[node name="FlamethrowerPart" type="Area2D" unique_id=266467883]
-script = ExtResource("1_qr7t4")
-flameball_scene = ExtResource("2_wrcpe")
+[node name="GenericBlasterPart" type="Area2D" unique_id=266467883]
+script = ExtResource("1_p3eq3")
+projectile_scene = ExtResource("2_0k51l")
+barrel_length = 30.0
+pivot_offset = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917528571]
-position = Vector2(1, -1.25)
+position = Vector2(-9, -1.25)
 shape = SubResource("RectangleShape2D_2fd3r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2010129662]
@@ -59,11 +61,11 @@ material = SubResource("ShaderMaterial_2fd3r")
 position = Vector2(-4.5474735e-13, 3.8146973e-06)
 rotation = -1.5707964
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_2fd3r")
+texture = ExtResource("2_ekixx")
 centered = false
 offset = Vector2(-8, -10)
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 32)
+region_rect = Rect2(16, 0, 16, 32)
 metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1846427746]

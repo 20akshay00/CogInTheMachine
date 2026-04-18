@@ -27,8 +27,6 @@ radius = 35.014282
 radius = 34.0147
 
 [node name="ScrapBot" type="CharacterBody2D" unique_id=1842318705]
-collision_layer = 8
-collision_mask = 8
 script = ExtResource("1_nfhjf")
 projectile_scene = ExtResource("2_m5x7h")
 scrap_scene = ExtResource("2_lklk2")

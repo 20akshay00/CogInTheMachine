@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c67uv6gwnrntw" path="res://scripts/ui/weapon_slot_ui.gd" id="1_22ny2"]
 [ext_resource type="PackedScene" uid="uid://w047glny51it" path="res://scenes/UI/light_bulb_ui.tscn" id="1_tj56d"]
 [ext_resource type="Texture2D" uid="uid://cj7fbsafmdydi" path="res://assets/art/ui/prototype_UI_large_pipe_v1.png" id="2_22ny2"]
+[ext_resource type="Texture2D" uid="uid://dxwacr3kajyey" path="res://assets/art/textures/ui_power_symbol.tres" id="3_ac0x7"]
 [ext_resource type="Script" uid="uid://bh5rbr3hw00nb" path="res://scripts/ui/weapon_display.gd" id="3_n53nq"]
 [ext_resource type="Texture2D" uid="uid://2je1afka3q1d" path="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png" id="4_ac0x7"]
 [ext_resource type="Shader" uid="uid://dj6jcqtpcc3i1" path="res://assets/shaders/fill_progress_bar.gdshader" id="5_b7adj"]
@@ -49,14 +50,14 @@ metadata/_edit_group_ = true
 
 [node name="LightBulbUI" parent="EnergyDisplay/Bulbs" unique_id=190261272 instance=ExtResource("1_tj56d")]
 layout_mode = 2
+glow_hue = Color(0.827451, 0.6901961, 0, 1)
+symbol_hue = Color(0.46638268, 0.38543528, 1.92523e-07, 1)
+symbol = ExtResource("3_ac0x7")
 
 [node name="VSeparator" type="VSeparator" parent="EnergyDisplay/Bulbs" unique_id=1956847535]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 40
-
-[node name="LightBulbUI2" parent="EnergyDisplay/Bulbs" unique_id=1123754387 instance=ExtResource("1_tj56d")]
-layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="EnergyDisplay/Bulbs" unique_id=1750813431]
 modulate = Color(1, 1, 1, 0)

@@ -1,7 +1,7 @@
 extends ARMPart
-class_name FlamethrowerPart
+class_name GenericBlasterPart
 
-@export var flameball_scene: PackedScene
+@export var projectile_scene: PackedScene
 @export var projectile_speed: float = 800.0
 @export var projectile_duration: float = 0.75
 @export var fire_rate: float = 0.5
@@ -19,7 +19,7 @@ func attack() -> void:
 	if not fire_timer.is_stopped() or not can_fire: return
 	
 	fire_timer.start()
-	var p = flameball_scene.instantiate()
+	var p = projectile_scene.instantiate()
 	p.damage = damage
 	p.collision_mask = projectile_collision_mask
 	get_tree().current_scene.add_child(p)

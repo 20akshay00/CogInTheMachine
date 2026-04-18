@@ -2,6 +2,7 @@ extends Area2D
 
 var speed: float = 0.0
 var dying: bool = false
+var damage: int = 1
 
 @onready var timer: Timer = $Timer
 
@@ -19,3 +20,9 @@ func _on_timeout() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(queue_free)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		area.take_damage(damage)
+		timer.stop()
+		_on_timeout()
