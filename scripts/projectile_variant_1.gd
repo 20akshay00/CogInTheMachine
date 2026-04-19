@@ -1,4 +1,5 @@
 extends Area2D
+class_name Projectile
 
 var speed: float = 0.0
 var dying: bool = false

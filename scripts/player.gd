@@ -71,10 +71,12 @@ func _process(delta: float) -> void:
 
 	# UNEQUIP
 	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_left_arm") and L_ARM_part:
+		AudioManager.play_effect(AudioManager.part_unequip_sfx)
 		L_ARM_part.eject()
 		EventManager.left_arm_unequipped.emit(L_ARM_part)
 		L_ARM_part = null
 	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_right_arm") and R_ARM_part:
+		AudioManager.play_effect(AudioManager.part_unequip_sfx)
 		R_ARM_part.eject()
 		EventManager.right_arm_unequipped.emit(R_ARM_part)
 		R_ARM_part = null
@@ -86,11 +88,13 @@ func request_arm_equip(part: ARMPart) -> Node2D:
 	if not (l_req or r_req): return null
 
 	if l_req and not L_ARM_part:
+		AudioManager.play_effect(AudioManager.part_equip_sfx)
 		L_ARM_part = part
 		EventManager.left_arm_equipped.emit(L_ARM_part)
 		L_ARM_part.set_collision_masks([3])
 		return L_ARM
 	if r_req and not R_ARM_part:
+		AudioManager.play_effect(AudioManager.part_equip_sfx)
 		R_ARM_part = part
 		EventManager.right_arm_equipped.emit(R_ARM_part)
 		R_ARM_part.set_collision_masks([3])

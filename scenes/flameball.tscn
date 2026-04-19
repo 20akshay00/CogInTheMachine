@@ -62,7 +62,7 @@ animations = [{
 radius = 18.027756
 
 [node name="Flameball" type="Area2D" unique_id=1344423761]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_6ny8y")
 

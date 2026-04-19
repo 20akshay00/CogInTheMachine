@@ -7,10 +7,10 @@ var select_tween: Tween
 @export var pivot_offset: float = 10.0
 @export var power: int = 1
 
-@onready var sprite: Sprite2D = $Sprite2D
+@export var sprite: Sprite2D
 @onready var base_root_scale: Vector2 = scale
-@onready var base_sprite_scale: Vector2 = sprite.scale
-@onready var base_sprite_rot: float = sprite.rotation
+var base_sprite_scale: Vector2
+var base_sprite_rot: float
 
 @onready var power_cost_ui: PowerCostUI = $PowerCostUI
 
@@ -46,6 +46,10 @@ var is_overloaded: bool = false
 var is_equipped_by_player: bool = false
 
 func _ready() -> void:
+	if not sprite: sprite = $Sprite2D
+	base_sprite_scale = sprite.scale
+	base_sprite_rot = sprite.rotation
+
 	if sprite.material: sprite.material = sprite.material.duplicate()
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
@@ -234,4 +238,5 @@ func set_collision_masks(arr: Array[int]) -> void:
 	var mask = 0
 	for layer in arr:
 		mask |= (1 << (layer - 1))
+		
 	projectile_collision_mask = mask

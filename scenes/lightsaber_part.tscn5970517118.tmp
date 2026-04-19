@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c7iypsrmxfibd"]
+
+[ext_resource type="Script" uid="uid://bc66y0s7lodac" path="res://scripts/lightsaber_part.gd" id="1_qb00s"]
+[ext_resource type="Texture2D" uid="uid://ddkqjjfss46c5" path="res://assets/art/prototype_melee_weapons_spritesheet_v3.png" id="2_xq605"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq605"]
+radius = 72.52758
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq605"]
+radius = 13.0
+height = 152.0
+
+[node name="LightsaberPart" type="Area2D" unique_id=241191575 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_qb00s")
+sprite = NodePath("Pivot/Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572088299]
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_xq605")
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1111133603]
+position = Vector2(-19, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=2034999009]
+position = Vector2(18, 0)
+rotation = -1.5707964
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_xq605")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 48)
+
+[node name="Hurtbox" type="Area2D" parent="Pivot" unique_id=1185671863]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hurtbox" unique_id=661523650]
+position = Vector2(17, 0)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_xq605")
+
+[node name="Timer" type="Timer" parent="." unique_id=426359483]
+
+[connection signal="area_entered" from="Pivot/Hurtbox" to="." method="_on_hurtbox_area_entered"]
