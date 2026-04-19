@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cueyehijrivrr" path="res://assets/art/protototype_body_spritesheet_v3.png" id="1_wxp4o"]
 [ext_resource type="Texture2D" uid="uid://2afwqn6nfvum" path="res://assets/art/prototype_right_arm_spritesheet_v3.png" id="2_pohyj"]
 [ext_resource type="Texture2D" uid="uid://bshtn7buhl8lo" path="res://assets/art/prototype_left_arm_spritesheet_v3.png" id="3_qyth4"]
+[ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="3_ytt3t"]
 [ext_resource type="Texture2D" uid="uid://c71t4cqs0bugs" path="res://assets/art/prototype_elite_head_v3.png" id="4_wxp4o"]
 [ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="6_qyth4"]
 [ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="8_t0nof"]
@@ -125,6 +126,7 @@ size = Vector2(60, 49)
 [node name="EliteBot" type="CharacterBody2D" unique_id=386290017]
 material = SubResource("ShaderMaterial_ytt3t")
 script = ExtResource("1_6i141")
+explosion_scene = ExtResource("3_ytt3t")
 
 [node name="Hitbox" parent="." unique_id=923278192 instance=ExtResource("8_t0nof")]
 scale = Vector2(0.99999994, 0.99999994)

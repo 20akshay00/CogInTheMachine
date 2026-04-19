@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b3mqy6t26avws" path="res://scenes/UI/weapon_slot_ui.tscn" id="13_dss4m"]
 [ext_resource type="PackedScene" uid="uid://c3qac151lfrt8" path="res://scenes/generic_blaster_part.tscn" id="14_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://blskfl81uk3ty" path="res://scenes/laser_part.tscn" id="15_lakw3"]
-[ext_resource type="PackedScene" uid="uid://cgq7uwnkivhe3" path="res://scenes/elite_bot.tscn" id="17_7t5mc"]
+[ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="17_2lf6f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2lf6f"]
 texture = ExtResource("1_pm21f")
@@ -61,16 +61,17 @@ script = ExtResource("1_k0juu")
 [node name="ScrapBar" type="Control" parent="UI" unique_id=1891779160]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -44.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = -4.0
 
 [node name="ProgressBar" type="TextureProgressBar" parent="UI/ScrapBar" unique_id=367400674]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 32.275
-anchor_top = 0.675
-anchor_right = 35.92502
-anchor_bottom = 0.675
+anchor_top = 0.7
+anchor_right = 35.925022
+anchor_bottom = 0.7
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(2.5, 2.5)
@@ -131,9 +132,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 18.0
-offset_top = 9.0
+offset_top = -29.0
 offset_right = 58.0
-offset_bottom = 49.0
+offset_bottom = 11.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Scaffolding" type="TextureProgressBar" parent="UI/HealthBar" unique_id=1234231587]
@@ -158,8 +159,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LightBulbUI" parent="UI/HealthBar/Bulbs" unique_id=190261272 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
-symbol_hue = Color(0.515627, 0, 0, 1)
+glow_hue = Color(0, 0.65109396, 0.07831559, 1)
+symbol_hue = Color(0, 0.3436183, 0.022868603, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -170,8 +171,8 @@ theme_override_constants/separation = 30
 
 [node name="LightBulbUI2" parent="UI/HealthBar/Bulbs" unique_id=2113398350 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
-symbol_hue = Color(0.515627, 0, 0, 1)
+glow_hue = Color(0, 0.65109396, 0.07831559, 1)
+symbol_hue = Color(0, 0.3436183, 0.022868603, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -182,8 +183,8 @@ theme_override_constants/separation = 30
 
 [node name="LightBulbUI3" parent="UI/HealthBar/Bulbs" unique_id=1023216862 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
-symbol_hue = Color(0.515627, 0, 0, 1)
+glow_hue = Color(0, 0.65109396, 0.07831559, 1)
+symbol_hue = Color(0, 0.3436183, 0.022868603, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -194,8 +195,8 @@ theme_override_constants/separation = 30
 
 [node name="LightBulbUI4" parent="UI/HealthBar/Bulbs" unique_id=1468361850 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
-symbol_hue = Color(0.515627, 0, 0, 1)
+glow_hue = Color(0, 0.65109396, 0.07831559, 1)
+symbol_hue = Color(0, 0.3436183, 0.022868603, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -206,8 +207,8 @@ theme_override_constants/separation = 30
 
 [node name="LightBulbUI5" parent="UI/HealthBar/Bulbs" unique_id=702806210 instance=ExtResource("5_dss4m")]
 layout_mode = 2
-glow_hue = Color(0.9999965, 0.32438317, 0.25642303, 1)
-symbol_hue = Color(0.515627, 0, 0, 1)
+glow_hue = Color(0, 0.65109396, 0.07831559, 1)
+symbol_hue = Color(0, 0.3436183, 0.022868603, 1)
 symbol = ExtResource("4_7t5mc")
 symbol_offset = Vector2(3, 0)
 
@@ -282,14 +283,7 @@ offset_top = 913.0
 offset_right = 715.52
 offset_bottom = 828.24
 
-[node name="P-MODULE SlotUI2" parent="UI" unique_id=83699518 instance=ExtResource("13_dss4m")]
-offset_left = 1000.0
-offset_top = 910.0
-offset_right = 993.52
-offset_bottom = 825.24
-slot_label = "P-MOD"
-
-[node name="R-ARM SlotUI3" parent="UI" unique_id=1700856667 instance=ExtResource("13_dss4m")]
+[node name="R-ARM SlotUI" parent="UI" unique_id=1700856667 instance=ExtResource("13_dss4m")]
 offset_left = 1279.0
 offset_top = 908.0
 offset_right = 1272.52
@@ -299,10 +293,13 @@ slot_label = "R-ARM"
 [node name="Parts" type="Node2D" parent="." unique_id=2104984358]
 
 [node name="GenericBlasterPart" parent="Parts" unique_id=266467883 instance=ExtResource("14_7t5mc")]
-position = Vector2(470, 435)
+position = Vector2(612, 739)
 
 [node name="LaserPart" parent="Parts" unique_id=298505101 instance=ExtResource("15_lakw3")]
-position = Vector2(545, 618)
+position = Vector2(579, 394)
+
+[node name="FlamethrowerPart" parent="Parts" unique_id=341861943 instance=ExtResource("17_2lf6f")]
+position = Vector2(627, 606)
 
 [node name="Scraps" type="Node2D" parent="." unique_id=2073898729]
 
@@ -310,13 +307,13 @@ position = Vector2(545, 618)
 position = Vector2(1420, 149)
 
 [node name="ScrapBot5" parent="." unique_id=496711657 instance=ExtResource("3_4wyf3")]
-position = Vector2(1198, -133)
+position = Vector2(902, 6)
+
+[node name="ScrapBot6" parent="." unique_id=1842318705 instance=ExtResource("3_4wyf3")]
+position = Vector2(238, 1049)
 
 [node name="ScrapBot4" parent="." unique_id=1756965142 instance=ExtResource("3_4wyf3")]
 position = Vector2(1664, 916)
-
-[node name="EliteBot3" parent="." unique_id=1045875192 instance=ExtResource("17_7t5mc")]
-position = Vector2(-435, 795)
 
 [node name="Player" parent="." unique_id=1944946535 instance=ExtResource("1_a02cp")]
 position = Vector2(976, 526)

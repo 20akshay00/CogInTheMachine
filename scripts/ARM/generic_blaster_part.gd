@@ -18,6 +18,7 @@ func _ready() -> void:
 func attack() -> void:
 	if not fire_timer.is_stopped() or not can_fire: return
 	
+	if is_equipped_by_player: durability -= 1.
 	fire_timer.start()
 	var p = projectile_scene.instantiate()
 	p.damage = damage

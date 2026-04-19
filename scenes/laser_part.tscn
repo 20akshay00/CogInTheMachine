@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://1dfgfl7powo8" path="res://scripts/laser_part.gd" id="1_3gjmq"]
 [ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_beatg"]
+[ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="2_kyj2x"]
 [ext_resource type="Shader" uid="uid://dw3qeliulo4r2" path="res://assets/shaders/energy_beam.gdshader" id="4_kyj2x"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="5_kyj2x"]
+[ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="5_qgj3j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kvtf"]
 resource_local_to_scene = true
 shader = ExtResource("5_kyj2x")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.3
 shader_parameter/active = false
@@ -23,8 +26,8 @@ radius = 36.05551
 
 [node name="LaserPart" type="Area2D" unique_id=298505101]
 script = ExtResource("1_3gjmq")
-durability = 10.0
 time_to_damage = 1.0
+explosion_scene = ExtResource("2_kyj2x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2084471813]
 material = SubResource("ShaderMaterial_0kvtf")
@@ -52,3 +55,7 @@ end_cap_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=460452392]
 shape = SubResource("CircleShape2D_3gjmq")
+metadata/_edit_lock_ = true
+
+[node name="PowerCostUI" parent="." unique_id=1918259621 instance=ExtResource("5_qgj3j")]
+position = Vector2(-50, -42)

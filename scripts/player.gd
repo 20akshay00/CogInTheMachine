@@ -1,10 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
-signal stats_changed(current_scrap, goal_scrap, level, power, health)
+signal stats_changed(current_scrap, goal_scrap, level, L_power, R_power, health)
 
 @export var health: int = 5
-@export var power: int = 10
+@export var L_power: int = 1
+@export var R_power: int = 1
+
 @export var scrap_count: int = 0
 @export var upgrade_level: int = 0
 @export var scrap_to_level: int = 50
@@ -29,7 +31,7 @@ var R_ARM_part: ARMPart = null
 var active_target: ARMPart = null
 
 func _ready() -> void:
-	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, L_power, R_power, health)
 
 func _physics_process(_delta: float) -> void:
 	velocity = Input.get_vector("left", "right", "up", "down") * speed
@@ -70,9 +72,11 @@ func _process(delta: float) -> void:
 	# UNEQUIP
 	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_left_arm") and L_ARM_part:
 		L_ARM_part.eject()
+		EventManager.left_arm_unequipped.emit(L_ARM_part)
 		L_ARM_part = null
 	if Input.is_action_pressed("eject") and Input.is_action_pressed("attack_right_arm") and R_ARM_part:
 		R_ARM_part.eject()
+		EventManager.right_arm_unequipped.emit(R_ARM_part)
 		R_ARM_part = null
 
 func request_arm_equip(part: ARMPart) -> Node2D:
@@ -81,24 +85,19 @@ func request_arm_equip(part: ARMPart) -> Node2D:
 	
 	if not (l_req or r_req): return null
 
-	if part.power <= get_available_power():
-		if l_req and not L_ARM_part:
-			L_ARM_part = part
-			L_ARM_part.set_collision_masks([3])
-			return L_ARM
-		if r_req and not R_ARM_part:
-			R_ARM_part = part
-			R_ARM_part.set_collision_masks([3])
-			return R_ARM
+	if l_req and not L_ARM_part:
+		L_ARM_part = part
+		EventManager.left_arm_equipped.emit(L_ARM_part)
+		L_ARM_part.set_collision_masks([3])
+		return L_ARM
+	if r_req and not R_ARM_part:
+		R_ARM_part = part
+		EventManager.right_arm_equipped.emit(R_ARM_part)
+		R_ARM_part.set_collision_masks([3])
+		return R_ARM
 
 	part._on_equip_fail()
 	return null
-
-func get_available_power() -> int:
-	var used = 0
-	if L_ARM_part: used += L_ARM_part.power
-	if R_ARM_part: used += R_ARM_part.power
-	return power - used
 
 func _get_best_target() -> ARMPart:
 	var items = pickup_area.get_overlapping_areas().filter(func(a): return a is ARMPart and not a.is_equipped)
@@ -134,12 +133,11 @@ func collect_scrap(amount: int) -> void:
 	scrap_count += amount
 	if scrap_count >= scrap_to_level:
 		_level_up()
-	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, L_power, R_power, health)
 
 func _level_up() -> void:
 	scrap_count -= scrap_to_level
 	upgrade_level += 1
-	power += 2
 	scrap_to_level = int(scrap_to_level * 1.2)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
@@ -150,7 +148,7 @@ func _on_pickup_area_area_exited(area: Area2D) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
-	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, power, health)
+	stats_changed.emit(scrap_count, scrap_to_level, upgrade_level, L_power, R_power, health)
 	_hit_animation()
 
 func _hit_animation() -> void:

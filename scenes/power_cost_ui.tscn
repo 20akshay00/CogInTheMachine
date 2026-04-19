@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dtt6lwg8ybbn3"]
+
+[ext_resource type="Script" uid="uid://q0xrc3nrpwcu" path="res://scripts/power_cost_ui.gd" id="1_rmqi6"]
+[ext_resource type="Texture2D" uid="uid://dxwacr3kajyey" path="res://assets/art/textures/ui_power_symbol.tres" id="2_7nmra"]
+
+[node name="PowerCostUI" type="Node2D" unique_id=1918259621]
+script = ExtResource("1_rmqi6")
+power_symbol = ExtResource("2_7nmra")

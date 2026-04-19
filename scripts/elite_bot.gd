@@ -19,6 +19,8 @@ var is_dead: bool = false
 var move_dir: Vector2 = Vector2.ZERO
 var dir_timer: float = 0.0
 
+@export var explosion_scene: PackedScene
+
 func _ready() -> void:
 	_initialize_arms()
 
@@ -88,6 +90,12 @@ func die() -> void:
 	is_dead = true
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
+	
+	var explosion = explosion_scene.instantiate()
+	add_sibling(explosion)
+	explosion.z_index = 100
+	explosion.global_position = global_position
+	explosion.explode()
 	
 	if L_ARM_part: 
 		L_ARM_part.drop()

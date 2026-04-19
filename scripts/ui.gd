@@ -13,11 +13,11 @@ func _ready() -> void:
 	if player:
 		player.stats_changed.connect(_on_player_stats_changed)
 
-func _on_player_stats_changed(current_scrap, goal_scrap, level, power, health) -> void:
+func _on_player_stats_changed(current_scrap, goal_scrap, level, L_power, R_power, health) -> void:
 	scrap_bar.max_value = goal_scrap
 	scrap_bar.value = current_scrap
 	level_label.text = "LVL " + str(level)
-	power_label.text = str(power)
+	#power_label.text = str(power)
 	if health < prev_health:
 		turn_off_health_bulbs(prev_health, health)
 	prev_health = health

@@ -2,12 +2,11 @@ extends ARMPart
 class_name LaserPart
 
 @export_group("Laser Settings")
-@export var durability: float = 5.0
-@export var time_to_damage: float = 0.5
-@export var energy_drain_rate: float = 0.2
+@export var time_to_damage: float = 0.25
+@export var energy_drain_rate: float = 2.
 @export var barrel_length: float = 23.0
 @export var max_length: float = 500.0
-@export var damage: int = 2
+@export var damage: int = 1
 
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var line: Line2D = $Line2D
@@ -30,7 +29,7 @@ func attack() -> void:
 		return
 	
 	is_attacking_this_frame = true
-	durability -= energy_drain_rate * get_process_delta_time()
+	if is_equipped_by_player: durability -= energy_drain_rate * get_process_delta_time()
 	
 	ray_cast.force_raycast_update()
 	var beam_end_local = Vector2(barrel_length + max_length, 0)
@@ -57,7 +56,8 @@ func attack() -> void:
 		
 	_update_visuals(beam_end_local)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	super(delta)
 	if not is_attacking_this_frame:
 		_set_visuals_active(false)
 		contact_timer = 0.0
