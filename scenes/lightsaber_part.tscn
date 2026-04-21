@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="2_1mqy6"]
 [ext_resource type="Texture2D" uid="uid://ddkqjjfss46c5" path="res://assets/art/prototype_melee_weapons_spritesheet_v3.png" id="2_xq605"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="2_xt5qe"]
+[ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="5_qchig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xq605"]
 radius = 72.52758
@@ -52,5 +53,8 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xq605")
 
 [node name="Timer" type="Timer" parent="." unique_id=426359483]
+
+[node name="PowerCostUI" parent="." unique_id=1918259621 instance=ExtResource("5_qchig")]
+position = Vector2(-50, -42)
 
 [connection signal="area_entered" from="Pivot/Hurtbox" to="." method="_on_hurtbox_area_entered"]

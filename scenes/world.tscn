@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://blskfl81uk3ty" path="res://scenes/laser_part.tscn" id="15_lakw3"]
 [ext_resource type="PackedScene" uid="uid://y2lk4hqsaco" path="res://scenes/flamethrower_part.tscn" id="17_2lf6f"]
 [ext_resource type="PackedScene" uid="uid://c7iypsrmxfibd" path="res://scenes/lightsaber_part.tscn" id="18_2lf6f"]
+[ext_resource type="PackedScene" uid="uid://cgq7uwnkivhe3" path="res://scenes/elite_bot.tscn" id="21_7iits"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2lf6f"]
 texture = ExtResource("1_pm21f")
@@ -325,3 +326,12 @@ position = Vector2(976, 526)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=372710337]
 position_smoothing_enabled = true
+
+[node name="EliteBot" parent="." unique_id=386290017 instance=ExtResource("21_7iits")]
+position = Vector2(378, 701)
+
+[node name="EliteBot2" parent="." unique_id=380878578 instance=ExtResource("21_7iits")]
+position = Vector2(1800, 611)
+
+[node name="EliteBot3" parent="." unique_id=1744676332 instance=ExtResource("21_7iits")]
+position = Vector2(1185, -155)
