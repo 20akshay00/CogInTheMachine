@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dypm38oh11pqx"]
 
 [ext_resource type="Script" uid="uid://b242jcfelurm1" path="res://scripts/projectile_variant_1.gd" id="1_7v46p"]
-[ext_resource type="Texture2D" uid="uid://py533bi2bpno" path="res://assets/art/projectile_spritesheet_v1.png" id="2_6wefy"]
+[ext_resource type="Texture2D" uid="uid://lb04joocmiif" path="res://assets/art/projectile_spritesheet_v1(1).png" id="2_7v46p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8fcr"]
-radius = 7.071068
+radius = 12.0
 
 [node name="ProjectileVariant1" type="Area2D" unique_id=643401877]
 collision_layer = 64
@@ -12,10 +12,11 @@ collision_mask = 0
 script = ExtResource("1_7v46p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401999053]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_6wefy")
-hframes = 2
-vframes = 2
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_7v46p")
+hframes = 4
+vframes = 5
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693250380]
 shape = SubResource("CircleShape2D_c8fcr")

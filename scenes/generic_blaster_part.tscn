@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c3qac151lfrt8"]
 
 [ext_resource type="Script" uid="uid://dp15kjmvhj4nw" path="res://scripts/ARM/generic_blaster_part.gd" id="1_p3eq3"]
-[ext_resource type="PackedScene" uid="uid://dypm38oh11pqx" path="res://scenes/projectile_variant_1.tscn" id="2_0k51l"]
-[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_ekixx"]
+[ext_resource type="PackedScene" uid="uid://dqlwc8ci7gyiv" path="res://scenes/projectile_variant_2.tscn" id="2_8rm8b"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="3_0k51l"]
 [ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="3_mkl0a"]
 [ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="5_8rm8b"]
+[ext_resource type="Texture2D" uid="uid://cnd8hopxtbue0" path="res://assets/art/weapons_spritesheet_v1.png" id="5_mkl0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fd3r"]
 size = Vector2(54, 36.5)
@@ -19,10 +19,11 @@ shader_parameter/active = false
 
 [node name="GenericBlasterPart" type="Area2D" unique_id=266467883]
 script = ExtResource("1_p3eq3")
-projectile_scene = ExtResource("2_0k51l")
-barrel_length = 30.0
-pivot_offset = 20.0
+projectile_scene = ExtResource("2_8rm8b")
+projectile_speed = 1200.0
+fire_rate = 0.2
 explosion_scene = ExtResource("3_mkl0a")
+max_durability = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917528571]
 position = Vector2(-9, -1.25)
@@ -30,15 +31,14 @@ shape = SubResource("RectangleShape2D_2fd3r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2010129662]
 material = SubResource("ShaderMaterial_2fd3r")
-position = Vector2(-4.5474735e-13, 3.8146973e-06)
+position = Vector2(-6.9999995, -0.9999961)
 rotation = -1.5707964
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_ekixx")
+texture = ExtResource("5_mkl0a")
 centered = false
 offset = Vector2(-8, -10)
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 32)
-metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1846427746]
 

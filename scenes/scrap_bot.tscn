@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://co83mclp8nvh6"]
 
 [ext_resource type="Script" uid="uid://bpflghuqfok30" path="res://scripts/scrap_bot.gd" id="1_nfhjf"]
-[ext_resource type="Texture2D" uid="uid://din843em3i05s" path="res://assets/art/prototype_scrap_bot_spritesheet_v3.png" id="1_v4nj3"]
 [ext_resource type="PackedScene" uid="uid://dit1jnho2028h" path="res://scenes/scrap.tscn" id="2_lklk2"]
-[ext_resource type="PackedScene" uid="uid://dypm38oh11pqx" path="res://scenes/projectile_variant_1.tscn" id="2_m5x7h"]
+[ext_resource type="PackedScene" uid="uid://bcn3tawg27cq5" path="res://scenes/projectile_variant_3.tscn" id="2_xeykw"]
+[ext_resource type="Texture2D" uid="uid://c2ucnnjv1x0m5" path="res://assets/art/scrap_bot_spritesheet_v1.png" id="4_xeykw"]
 [ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="5_xeykw"]
 
 [sub_resource type="Shader" id="Shader_xeykw"]
@@ -27,14 +27,17 @@ radius = 35.014282
 radius = 34.0147
 
 [node name="ScrapBot" type="CharacterBody2D" unique_id=1842318705]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_nfhjf")
-projectile_scene = ExtResource("2_m5x7h")
+health = 5
+projectile_scene = ExtResource("2_xeykw")
 scrap_scene = ExtResource("2_lklk2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=311324283]
 material = SubResource("ShaderMaterial_bjg85")
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("1_v4nj3")
+texture = ExtResource("4_xeykw")
 hframes = 9
 vframes = 4
 

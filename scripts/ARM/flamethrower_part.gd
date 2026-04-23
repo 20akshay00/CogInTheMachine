@@ -2,35 +2,37 @@ extends ARMPart
 class_name FlamethrowerPart
 
 @export var flameball_scene: PackedScene
-@export var projectile_speed: float = 800.0
-@export var projectile_duration: float = 0.75
-@export var fire_rate: float = 0.5
-@export var barrel_length: float = 50.0
-@export var damage: int = 2
+@export var fire_rate: float = 0.09
+@export var spread: float = 10.0
+@export var barrel_length: float = 40.0
+@export var durability_drain: float = 0.5
+@export var projectile_speed: float = 1000.
+@export var projectile_duration: float = 0.5
 
-@onready var fire_timer: Timer = $Timer
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	super()
-	fire_timer.wait_time = fire_rate
-	fire_timer.one_shot = true
-
-func _process(delta: float) -> void:
-	super(delta)
+	timer.wait_time = fire_rate
+	timer.one_shot = true
 
 func attack() -> void:
-	if not fire_timer.is_stopped() or not can_fire: return
+	if not timer.is_stopped() or not can_fire: return
 	
-	if is_equipped_by_player: durability -= 1.
-	fire_timer.start()
+	if is_equipped_by_player: 
+		durability -= durability_drain
+		if Engine.get_frames_drawn() % 5 == 0:
+			AudioManager.play_effect(AudioManager.fireball_shoot_sfx)
+
+	timer.start()
 	var p = flameball_scene.instantiate()
-	p.damage = damage
-	p.collision_mask = projectile_collision_mask
 	get_tree().current_scene.add_child(p)
+	p.timer.wait_time = projectile_duration
+	p.timer.start()
+	var random_angle = deg_to_rad(randf_range(-spread, spread))
+	p.global_rotation = global_rotation + random_angle
+	p.global_position = global_position + Vector2.RIGHT.rotated(p.global_rotation) * barrel_length
 	
-	p.global_transform = global_transform
-	p.global_position += Vector2.RIGHT.rotated(global_rotation) * barrel_length
-	
+	if "damage" in p: p.damage = 1 
 	if "speed" in p: p.speed = projectile_speed
-	if p.has_node("Timer"):
-		p.get_node("Timer").start(projectile_duration)
+	p.collision_mask = projectile_collision_mask

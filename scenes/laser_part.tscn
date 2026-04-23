@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://blskfl81uk3ty"]
 
 [ext_resource type="Script" uid="uid://1dfgfl7powo8" path="res://scripts/laser_part.gd" id="1_3gjmq"]
-[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_beatg"]
 [ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="2_kyj2x"]
+[ext_resource type="Texture2D" uid="uid://cnd8hopxtbue0" path="res://assets/art/weapons_spritesheet_v1.png" id="4_0kvtf"]
 [ext_resource type="Shader" uid="uid://dw3qeliulo4r2" path="res://assets/shaders/energy_beam.gdshader" id="4_kyj2x"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="5_kyj2x"]
 [ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="5_qgj3j"]
@@ -17,39 +17,43 @@ shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8bjgd"]
 shader = ExtResource("4_kyj2x")
-shader_parameter/beam_color = Color(0.3, 0.5, 1, 1)
-shader_parameter/flicker_speed = 20.0
-shader_parameter/core_width = 1.0
+shader_parameter/beam_color = Color(0.49019608, 0.35686275, 0.22745098, 1)
+shader_parameter/core_color = Color(0.8784314, 0.7176471, 0.5529412, 1)
+shader_parameter/thickness = 0.758000036005
+shader_parameter/speed = 13.4270006377825
+shader_parameter/wave_freq = 4.4970002136075
+shader_parameter/wave_amp = 0.0890000042275
+shader_parameter/pulse_freq = 16.6350007901625
+shader_parameter/pixel_size = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gjmq"]
 radius = 36.05551
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyj2x"]
+
 [node name="LaserPart" type="Area2D" unique_id=298505101]
 script = ExtResource("1_3gjmq")
 time_to_damage = 1.0
+energy_drain_rate = 0.5
+damage = 3
 explosion_scene = ExtResource("2_kyj2x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2084471813]
 material = SubResource("ShaderMaterial_0kvtf")
-position = Vector2(24.999998, 1.0000038)
+position = Vector2(20, 1.0000001)
 rotation = -1.5707964
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_beatg")
+texture = ExtResource("4_0kvtf")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 32)
 
 [node name="Timer" type="Timer" parent="." unique_id=1977691846]
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=175442478]
-collision_mask = 4
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="Line2D" type="Line2D" parent="." unique_id=1918350073]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_8bjgd")
 points = PackedVector2Array(68, 24)
-width = 30.0
+width = 45.0
 texture_mode = 1
 end_cap_mode = 2
 
@@ -59,3 +63,10 @@ metadata/_edit_lock_ = true
 
 [node name="PowerCostUI" parent="." unique_id=1918259621 instance=ExtResource("5_qgj3j")]
 position = Vector2(-50, -42)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=609042394]
+shape = SubResource("RectangleShape2D_kyj2x")
+target_position = Vector2(298, -2)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false

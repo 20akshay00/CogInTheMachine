@@ -26,7 +26,10 @@ func attack() -> void:
 	
 	is_attacking = true
 	hurtbox_shape.disabled = false 
-	
+	if is_equipped_by_player: 
+		durability -= 1.
+		AudioManager.play_effect(AudioManager.sword_shoot_sfx)
+		
 	var half_angle = deg_to_rad(swing_angle / 2.0)
 	var start_angle = -half_angle * swing_direction
 	var end_angle = half_angle * swing_direction
@@ -52,19 +55,22 @@ func attack() -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if not is_attacking: return
 	
-	if area is Flameball or area is Projectile:
+	if area is Flameball or area is ProjectileVariant1 or area is ProjectileVariant2:
 		reflect_projectile(area)
 		return
 		
 	if area is Hitbox:
+		AudioManager.play_effect(AudioManager.sword_hit_sfx)
 		area.take_damage(damage)
-			
+
 func reflect_projectile(proj: Area2D) -> void:
 	if "velocity" in proj:
-		proj.velocity = -proj.velocity * 1.5
+		proj.velocity = -proj.velocity * 1.25
 	elif "direction" in proj:
 		proj.direction = -proj.direction
-		
+	
+	if "timer" in proj:
+		proj.timer.start()
 	proj.rotation += PI 
 	
 	proj.set_collision_mask_value(6, false)

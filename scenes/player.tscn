@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dfy1a50hh2nvn"]
 
 [ext_resource type="Shader" uid="uid://cwp1abw5dn1je" path="res://assets/shaders/flash.gdshader" id="1_smehm"]
-[ext_resource type="Texture2D" uid="uid://cueyehijrivrr" path="res://assets/art/protototype_body_spritesheet_v3.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://mlv6pksspoii" path="res://scripts/player.gd" id="1_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://cfxo4luc6212x" path="res://assets/art/prototype_module_v3.png" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://2afwqn6nfvum" path="res://assets/art/prototype_right_arm_spritesheet_v3.png" id="3_vgqql"]
-[ext_resource type="Texture2D" uid="uid://bshtn7buhl8lo" path="res://assets/art/prototype_left_arm_spritesheet_v3.png" id="4_fkybt"]
-[ext_resource type="Texture2D" uid="uid://c0a2rc7cn4rcf" path="res://assets/art/prototype_head_spritesheet_v3.png" id="7_3smsa"]
+[ext_resource type="Texture2D" uid="uid://coljb4wcmc3qx" path="res://assets/art/body_spritesheet_v1.png" id="3_smehm"]
+[ext_resource type="Texture2D" uid="uid://biaqi1o0knt6u" path="res://assets/art/left_arm_spritesheet_v1.png" id="5_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://bc10w7mcqgtms" path="res://assets/art/right_arm_spritesheet_v1.png" id="5_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://cga145e6f2x42" path="res://assets/art/main_head_spritesheet_v1.png" id="6_smehm"]
 [ext_resource type="PackedScene" uid="uid://kx7tq5qqnfno" path="res://scenes/hitbox.tscn" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cusm62ucrwb80" path="res://assets/art/module_v1.png" id="7_smehm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
 shader = ExtResource("1_smehm")
@@ -16,23 +16,27 @@ shader_parameter/flash_intensity = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3smsa"]
 radius = 299.376
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
-atlas = ExtResource("1_v0iea")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("3_smehm")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
-atlas = ExtResource("1_v0iea")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_smehm")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_smehm")
 region = Rect2(48, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("1_v0iea")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_smehm")
 region = Rect2(96, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fkybt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvnsp")
+"texture": SubResource("AtlasTexture_ur7pv")
 }],
 "loop": false,
 "name": &"idle",
@@ -40,33 +44,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6t5aa")
+"texture": SubResource("AtlasTexture_y4r1p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vgqql")
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
 }],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
-atlas = ExtResource("3_vgqql")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("5_y4r1p")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
-atlas = ExtResource("3_vgqql")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("5_y4r1p")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
-atlas = ExtResource("3_vgqql")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("5_y4r1p")
 region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x3wgy")
+"texture": SubResource("AtlasTexture_oprun")
 }],
 "loop": false,
 "name": &"idle",
@@ -74,33 +81,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3smsa")
+"texture": SubResource("AtlasTexture_a8ls1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8erm5")
+"texture": SubResource("AtlasTexture_qfm1y")
 }],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
-atlas = ExtResource("4_fkybt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("5_ur7pv")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("4_fkybt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("5_ur7pv")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("4_fkybt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("5_ur7pv")
 region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pu2lt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ek2")
+"texture": SubResource("AtlasTexture_jej6c")
 }],
 "loop": false,
 "name": &"idle",
@@ -108,10 +115,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
+"texture": SubResource("AtlasTexture_smehm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
+"texture": SubResource("AtlasTexture_f1ej7")
 }],
 "loop": true,
 "name": &"move",
@@ -127,6 +134,7 @@ radius = 32.24903
 [node name="Player" type="CharacterBody2D" unique_id=1944946535 groups=["Player"]]
 material = SubResource("ShaderMaterial_ur7pv")
 script = ExtResource("1_x3wgy")
+dash_speed = 1500.0
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=653654433]
 collision_layer = 0
@@ -139,8 +147,7 @@ shape = SubResource("CircleShape2D_3smsa")
 use_parent_material = true
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_fkybt")
-animation = &"idle"
-frame_progress = 1.0
+animation = &"move"
 metadata/_edit_lock_ = true
 
 [node name="R-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=1332814684]
@@ -148,7 +155,7 @@ use_parent_material = true
 position = Vector2(4.999997, -1.1324883e-06)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
-animation = &"idle"
+animation = &"move"
 metadata/_edit_lock_ = true
 
 [node name="L-ARM Socket" type="AnimatedSprite2D" parent="." unique_id=178841520]
@@ -156,20 +163,12 @@ use_parent_material = true
 position = Vector2(-3.999999, 0.9999993)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_pu2lt")
-animation = &"idle"
+animation = &"move"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2119486550]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_v0iea")
-
-[node name="Head" type="Sprite2D" parent="." unique_id=829134615]
-use_parent_material = true
-position = Vector2(0, -10.999999)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("7_3smsa")
-hframes = 8
-frame = 2
 
 [node name="P-MODULE" type="Node2D" parent="." unique_id=1325499855]
 position = Vector2(0, 28)
@@ -177,7 +176,15 @@ position = Vector2(0, 28)
 [node name="DefaultModule" type="Sprite2D" parent="P-MODULE" unique_id=1216273384]
 position = Vector2(5.9604645e-08, -1)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_cvnsp")
+texture = ExtResource("7_smehm")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=829134615]
+use_parent_material = true
+position = Vector2(0, -10.999999)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("6_smehm")
+hframes = 8
+frame = 2
 
 [node name="L-ARM" type="Node2D" parent="." unique_id=1988815885]
 position = Vector2(-54, 5)
@@ -190,6 +197,9 @@ collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=848732950]
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=1827509812]
+one_shot = true
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]

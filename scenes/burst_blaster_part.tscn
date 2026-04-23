@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dikwrklavuju7"]
+
+[ext_resource type="Script" uid="uid://be2firso2kw2l" path="res://scripts/burst_blaster_part.gd" id="1_v7qp3"]
+[ext_resource type="PackedScene" uid="uid://dypm38oh11pqx" path="res://scenes/projectile_variant_1.tscn" id="2_emnxj"]
+[ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="3_m2i7k"]
+[ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="4_tcx8b"]
+[ext_resource type="Texture2D" uid="uid://cnd8hopxtbue0" path="res://assets/art/weapons_spritesheet_v1.png" id="5_rnudi"]
+[ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="6_iq3yk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fd3r"]
+size = Vector2(54, 36.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fd3r"]
+shader = ExtResource("4_tcx8b")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.50000002375
+shader_parameter/active = false
+
+[node name="BurstBlasterPart" type="Area2D" unique_id=266467883]
+script = ExtResource("1_v7qp3")
+projectile_scene = ExtResource("2_emnxj")
+explosion_scene = ExtResource("3_m2i7k")
+max_durability = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917528571]
+position = Vector2(-9, -1.25)
+shape = SubResource("RectangleShape2D_2fd3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2010129662]
+material = SubResource("ShaderMaterial_2fd3r")
+position = Vector2(-6.9999995, -0.9999961)
+rotation = -1.5707964
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("5_rnudi")
+centered = false
+offset = Vector2(-8, -10)
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 32)
+
+[node name="Timer" type="Timer" parent="." unique_id=1846427746]
+
+[node name="PowerCostUI" parent="." unique_id=1918259621 instance=ExtResource("6_iq3yk")]
+position = Vector2(-50, -42)

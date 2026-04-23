@@ -3,7 +3,7 @@ class_name GenericBlasterPart
 
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 800.0
-@export var projectile_duration: float = 0.75
+@export var projectile_duration: float = 0.45
 @export var fire_rate: float = 0.5
 @export var barrel_length: float = 50.0
 @export var damage: int = 1

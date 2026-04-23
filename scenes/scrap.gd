@@ -4,6 +4,9 @@ class_name Scrap
 var value: int = 1
 var _consumed: bool = false
 
+func _ready() -> void:
+	$Sprite2D.frame = randi_range(0, 4)
+
 func consume() -> int:
 	if _consumed: return 0
 	_consumed = true

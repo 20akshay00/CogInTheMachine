@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://y2lk4hqsaco"]
 
 [ext_resource type="Script" uid="uid://nf1cqtwo5g0f" path="res://scripts/ARM/flamethrower_part.gd" id="1_qr7t4"]
-[ext_resource type="Texture2D" uid="uid://cxdx0or8wuuas" path="res://assets/art/prototype_arms_spritesheet_v3.png" id="2_2fd3r"]
 [ext_resource type="PackedScene" uid="uid://bdv3bgmum76u0" path="res://scenes/flameball.tscn" id="2_wrcpe"]
 [ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="3_rr16b"]
 [ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="4_gei3g"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="4_ri61j"]
+[ext_resource type="Texture2D" uid="uid://cnd8hopxtbue0" path="res://assets/art/weapons_spritesheet_v1.png" id="5_ri61j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fd3r"]
 size = Vector2(74, 36.5)
@@ -20,8 +20,8 @@ shader_parameter/active = false
 [node name="FlamethrowerPart" type="Area2D" unique_id=266467883]
 script = ExtResource("1_qr7t4")
 flameball_scene = ExtResource("2_wrcpe")
-power = 2
 explosion_scene = ExtResource("3_rr16b")
+max_durability = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917528571]
 position = Vector2(1, -1.25)
@@ -29,15 +29,14 @@ shape = SubResource("RectangleShape2D_2fd3r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2010129662]
 material = SubResource("ShaderMaterial_2fd3r")
-position = Vector2(-4.5474735e-13, 3.8146973e-06)
+position = Vector2(-6.999999, 3.8146973e-06)
 rotation = -1.5707964
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_2fd3r")
+texture = ExtResource("5_ri61j")
 centered = false
 offset = Vector2(-8, -10)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
-metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1846427746]
 

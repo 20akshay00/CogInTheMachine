@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdv3bgmum76u0"]
 
 [ext_resource type="Script" uid="uid://c24g26tc4otxs" path="res://scripts/ARM/flameball.gd" id="1_6ny8y"]
-[ext_resource type="Texture2D" uid="uid://dx42gcs28ymlr" path="res://assets/art/flameball_spritesheet_v1.png" id="1_em71g"]
+[ext_resource type="Texture2D" uid="uid://5ku8xb2ygvy7" path="res://assets/art/flameball_spritesheet_v1.png" id="1_em71g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ny8y"]
 atlas = ExtResource("1_em71g")
@@ -76,7 +76,6 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_em71g")
 
 [node name="Timer" type="Timer" parent="." unique_id=534827314]
-wait_time = 5.0
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

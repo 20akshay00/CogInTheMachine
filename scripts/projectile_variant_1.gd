@@ -1,6 +1,7 @@
 extends Area2D
-class_name Projectile
+class_name ProjectileVariant1
 
+@export var drag: float = 0.8
 var speed: float = 0.0
 var dying: bool = false
 var damage: int = 1
@@ -12,6 +13,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if dying: return
+	
+	speed = move_toward(speed, 0.0, speed * drag * delta)
+	
 	global_position += Vector2.RIGHT.rotated(global_rotation) * speed * delta
 
 func _on_timeout() -> void:

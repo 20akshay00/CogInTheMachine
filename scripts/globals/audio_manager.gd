@@ -3,6 +3,12 @@ extends AudioStreamPlayer
 var part_equip_sfx = preload("res://assets/audio/partattach4.mp3")
 var part_unequip_sfx = preload("res://assets/audio/partdetach2.mp3")
 
+var fireball_hit_sfx = preload("res://assets/audio/fireballhit1.mp3")
+var fireball_shoot_sfx = preload("res://assets/audio/fireballshoot1.mp3")
+
+var sword_hit_sfx = preload("res://assets/audio/swordhit1.mp3")
+var sword_shoot_sfx = preload("res://assets/audio/swordswing1.mp3")
+
 func _play_music(music: AudioStream, volume = -7):
 	if stream == music:
 		return
@@ -14,7 +20,7 @@ func _play_music(music: AudioStream, volume = -7):
 func play_music_level():
 	pass
 
-func play_effect(aud_stream: AudioStream, volume = 0.0, bus="Misc"):
+func play_effect(aud_stream: AudioStream, volume = 0.0, bus="SFX"):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = aud_stream
 	fx_player.name = "FX_PLAYER"

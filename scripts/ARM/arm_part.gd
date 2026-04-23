@@ -20,7 +20,7 @@ var in_pickup_range: bool = false
 var is_mouse_hover: bool = false
 var is_selected: bool = false 
 
-@export var eject_distance: float = 400.0
+@export var eject_distance: float = 550.0
 @export var eject_rotation_offset: float = 2 * PI
 @export var eject_duration: float = 0.8
 @export var damage_on_eject: int = 1
@@ -40,7 +40,7 @@ var _eject_tween: Tween
 var projectile_collision_mask = 0
 
 @export var max_durability: float = 10.
-@export var durability: float = max_durability
+@onready var durability: float = max_durability
 var is_overloaded: bool = false
 
 var is_equipped_by_player: bool = false

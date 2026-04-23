@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dqlwc8ci7gyiv"]
+
+[ext_resource type="Script" uid="uid://dwytoww3esfa4" path="res://scripts/projectile_variant_2.gd" id="1_rkj83"]
+[ext_resource type="Texture2D" uid="uid://lb04joocmiif" path="res://assets/art/projectile_spritesheet_v1(1).png" id="2_wmaao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8fcr"]
+radius = 32.0
+
+[node name="ProjectileVariant2" type="Area2D" unique_id=643401877]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_rkj83")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401999053]
+position = Vector2(0, -9.536743e-07)
+rotation = 1.5707964
+scale = Vector2(7.157846, 4.98026)
+texture = ExtResource("2_wmaao")
+hframes = 4
+vframes = 5
+frame = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693250380]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_c8fcr")
+
+[node name="Timer" type="Timer" parent="." unique_id=211098633]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

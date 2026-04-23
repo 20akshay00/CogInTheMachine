@@ -20,10 +20,13 @@ var move_dir: Vector2 = Vector2.ZERO
 var dir_timer: float = 0.0
 
 @export var explosion_scene: PackedScene
+@onready var attack_timer: Timer = $AttackTimer
 
 func _ready() -> void:
 	_initialize_arms()
-
+	attack_timer.start(randf_range(0., 1.))
+	attack_timer.wait_time = randf_range(1.5, 2.5)
+	
 func _initialize_arms() -> void:
 	for child in L_ARM.get_children():
 		if child is ARMPart:
@@ -71,8 +74,12 @@ func _process(delta: float) -> void:
 	L_ARM.rotation = lerp_angle(L_ARM.rotation, to_player, rotation_speed * delta)
 	R_ARM.rotation = lerp_angle(R_ARM.rotation, to_player, rotation_speed * delta)
 	
-	if L_ARM_part: L_ARM_part.attack()
-	if R_ARM_part: R_ARM_part.attack()
+	if L_ARM_part and attack_timer.is_stopped(): 
+		L_ARM_part.attack()
+		attack_timer.start()
+	if R_ARM_part and attack_timer.is_stopped(): 
+		R_ARM_part.attack()
+		attack_timer.start()
 
 func take_damage(amount: int) -> void:
 	if is_dead: return

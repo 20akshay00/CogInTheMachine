@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bc66y0s7lodac" path="res://scripts/lightsaber_part.gd" id="1_qb00s"]
 [ext_resource type="PackedScene" uid="uid://buuie1rwhapcb" path="res://scenes/explosion.tscn" id="2_1mqy6"]
-[ext_resource type="Texture2D" uid="uid://ddkqjjfss46c5" path="res://assets/art/prototype_melee_weapons_spritesheet_v3.png" id="2_xq605"]
 [ext_resource type="Shader" uid="uid://5b5di354o5eh" path="res://assets/shaders/outline.gdshader" id="2_xt5qe"]
+[ext_resource type="Texture2D" uid="uid://cema0runkgacj" path="res://assets/art/melee_weapons_spritesheet_v1.png" id="4_qchig"]
 [ext_resource type="PackedScene" uid="uid://dtt6lwg8ybbn3" path="res://scenes/power_cost_ui.tscn" id="5_qchig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xq605"]
@@ -19,13 +19,14 @@ shader_parameter/active = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq605"]
 radius = 26.0
-height = 168.0
+height = 268.0
 
 [node name="LightsaberPart" type="Area2D" unique_id=241191575 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_qb00s")
 pivot_offset = 50.0
 sprite = NodePath("Pivot/Sprite2D")
 explosion_scene = ExtResource("2_1mqy6")
+max_durability = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572088299]
 position = Vector2(-0.5, 0)
@@ -36,19 +37,20 @@ position = Vector2(-57, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=2034999009]
 material = SubResource("ShaderMaterial_1mqy6")
-position = Vector2(62.999996, 0)
+position = Vector2(126, 0)
 rotation = -1.5707964
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_xq605")
+texture = ExtResource("4_qchig")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 48)
+region_rect = Rect2(32, 0, 32, 88)
 
 [node name="Hurtbox" type="Area2D" parent="Pivot" unique_id=1185671863]
+position = Vector2(22, 0)
 collision_layer = 0
 collision_mask = 68
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hurtbox" unique_id=661523650]
-position = Vector2(59, 0)
+position = Vector2(90, 0)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xq605")
 
