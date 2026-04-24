@@ -173,10 +173,10 @@ metadata/_edit_lock_ = true
 
 [node name="DescriptionDecal" type="TextureRect" parent="DataPanels" unique_id=1285001205]
 layout_mode = 0
-offset_left = -5.0
-offset_top = -9.000015
-offset_right = 130.99997
-offset_bottom = 41.40001
+offset_left = -17.999992
+offset_top = -19.000015
+offset_right = 137.19995
+offset_bottom = 48.199997
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("10_b7adj")
 

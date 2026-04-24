@@ -64,12 +64,12 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2lf6f")
 sources/1 = SubResource("TileSetAtlasSource_oo54l")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_37qwj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgqkh"]
 resource_local_to_scene = true
 shader = ExtResource("23_kpybi")
 shader_parameter/flash_intensity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_navra"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_munwf"]
 resource_local_to_scene = true
 shader = ExtResource("23_kpybi")
 shader_parameter/flash_intensity = 0.0
@@ -321,10 +321,10 @@ offset_right = 755.52
 offset_bottom = 827.24
 
 [node name="R-ARM SlotUI" parent="UI" unique_id=1700856667 instance=ExtResource("13_dss4m")]
-offset_left = 1239.0
-offset_top = 915.0
-offset_right = 1232.52
-offset_bottom = 830.24
+offset_left = 1240.0
+offset_top = 913.0
+offset_right = 1233.52
+offset_bottom = 828.24
 slot_label = "R-ARM"
 
 [node name="Parts" type="Node2D" parent="." unique_id=2104984358]
@@ -367,9 +367,9 @@ position_smoothing_enabled = true
 script = ExtResource("23_xgqkh")
 
 [node name="EliteBot2" parent="." unique_id=380878578 instance=ExtResource("21_7iits")]
-material = SubResource("ShaderMaterial_37qwj")
+material = SubResource("ShaderMaterial_xgqkh")
 position = Vector2(1800, 611)
 
 [node name="EliteBot3" parent="." unique_id=1744676332 instance=ExtResource("21_7iits")]
-material = SubResource("ShaderMaterial_navra")
+material = SubResource("ShaderMaterial_munwf")
 position = Vector2(1185, -155)
