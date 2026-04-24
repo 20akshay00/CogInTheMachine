@@ -2,16 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c67uv6gwnrntw" path="res://scripts/ui/weapon_slot_ui.gd" id="1_22ny2"]
 [ext_resource type="PackedScene" uid="uid://w047glny51it" path="res://scenes/UI/light_bulb_ui.tscn" id="1_tj56d"]
-[ext_resource type="Texture2D" uid="uid://cj7fbsafmdydi" path="res://assets/art/ui/prototype_UI_large_pipe_v1.png" id="2_22ny2"]
 [ext_resource type="Texture2D" uid="uid://dxwacr3kajyey" path="res://assets/art/textures/ui_power_symbol.tres" id="3_ac0x7"]
 [ext_resource type="Script" uid="uid://bh5rbr3hw00nb" path="res://scripts/ui/weapon_display.gd" id="3_n53nq"]
-[ext_resource type="Texture2D" uid="uid://2je1afka3q1d" path="res://assets/art/ui/prototype_UI_large_circle_backgroundl_v1.png" id="4_ac0x7"]
+[ext_resource type="Texture2D" uid="uid://6nkbmyckew6e" path="res://assets/art/ui/UI_large_circle_background_v1.png" id="5_22ny2"]
 [ext_resource type="Shader" uid="uid://dj6jcqtpcc3i1" path="res://assets/shaders/fill_progress_bar.gdshader" id="5_b7adj"]
-[ext_resource type="Texture2D" uid="uid://djd4kppharw21" path="res://assets/art/ui/prototype_UI_large_circle_fill_v1.png" id="6_ltadg"]
-[ext_resource type="Texture2D" uid="uid://cj2jx47gsyiom" path="res://assets/art/ui/prototype_UI_large_circle_decal_v1.png" id="7_yx3ds"]
-[ext_resource type="Texture2D" uid="uid://cxcgnpf0ocykr" path="res://assets/art/textures/ui_text_box_decal.tres" id="8_lwwb6"]
-[ext_resource type="Texture2D" uid="uid://3xibhuhbwacg" path="res://assets/art/textures/ui_text_box_bg.tres" id="9_3fbme"]
-[ext_resource type="Texture2D" uid="uid://cgaxnm0ytablj" path="res://assets/art/protototype_weapons_spritesheet_v3.png" id="10_ac0x7"]
+[ext_resource type="Texture2D" uid="uid://ct8gyvyn16l0b" path="res://assets/art/ui/UI_large_circle_durability_fill_v1.png" id="7_n53nq"]
+[ext_resource type="Texture2D" uid="uid://cdswes6xlhbso" path="res://assets/art/ui/UI_large_circle_decal_v1.png" id="8_ac0x7"]
+[ext_resource type="Texture2D" uid="uid://bwuk6637rf7tj" path="res://assets/art/protototype_weapons_spritesheet_v3.png" id="10_ac0x7"]
+[ext_resource type="Texture2D" uid="uid://b1jkfnqgsanv3" path="res://assets/art/ui/UI_title_panel_v1.png" id="10_b7adj"]
 [ext_resource type="FontFile" uid="uid://t4iowydqkote" path="res://assets/fonts/SairaStencil-VariableFont_wdth,wght.ttf" id="10_nyuck"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xo05s"]
@@ -23,7 +21,7 @@ shader_parameter/wave_intensity = 0.0290000013775
 shader_parameter/wave_frequency = 10.3770004929075
 shader_parameter/wave_speed = 2.2710001078725
 shader_parameter/phase_offset = 0.0
-shader_parameter/tint_color = Color(0.65882355, 0.59607846, 0.27450982, 1)
+shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/pixel_resolution = 32.0
 
 [node name="WeaponSlotUI" type="Control" unique_id=1454238318]
@@ -44,10 +42,10 @@ offset_bottom = 40.0
 [node name="Bulbs" type="HBoxContainer" parent="EnergyDisplay" unique_id=1329785276]
 z_index = 1
 layout_mode = 0
-offset_left = -169.0
-offset_top = 114.0
-offset_right = -25.0
-offset_bottom = 154.0
+offset_left = -162.0
+offset_top = 103.0
+offset_right = 74.0
+offset_bottom = 143.0
 metadata/_edit_group_ = true
 
 [node name="LightBulbUI" parent="EnergyDisplay/Bulbs" unique_id=1286195017 instance=ExtResource("1_tj56d")]
@@ -122,7 +120,6 @@ offset_top = 65.0
 offset_right = -79.0
 offset_bottom = 97.0
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_22ny2")
 metadata/_edit_lock_ = true
 
 [node name="WeaponDisplay" type="Control" parent="." unique_id=364234416]
@@ -139,7 +136,7 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("4_ac0x7")
+texture = ExtResource("5_22ny2")
 
 [node name="LargeCircleFG" type="TextureRect" parent="WeaponDisplay" unique_id=1722804874]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -148,14 +145,14 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("6_ltadg")
+texture = ExtResource("7_n53nq")
 
 [node name="LargeCircleDecal" type="TextureRect" parent="WeaponDisplay" unique_id=791414952]
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_yx3ds")
+texture = ExtResource("8_ac0x7")
 
 [node name="Weapon" type="Sprite2D" parent="WeaponDisplay" unique_id=733298591]
 modulate = Color(1, 1, 1, 0)
@@ -176,17 +173,18 @@ metadata/_edit_lock_ = true
 
 [node name="DescriptionDecal" type="TextureRect" parent="DataPanels" unique_id=1285001205]
 layout_mode = 0
-offset_right = 126.0
-offset_bottom = 38.0
+offset_left = -5.0
+offset_top = -9.000015
+offset_right = 130.99997
+offset_bottom = 41.40001
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("8_lwwb6")
+texture = ExtResource("10_b7adj")
 
 [node name="DescriptionBG" type="TextureRect" parent="DataPanels" unique_id=267158400]
 layout_mode = 0
 offset_right = 126.0
 offset_bottom = 38.0
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("9_3fbme")
 
 [node name="DescriptionLabel" type="Label" parent="DataPanels" unique_id=1750685263]
 layout_mode = 0
